@@ -17,7 +17,7 @@ position = Vector2(1, 20)
 texture = ExtResource("2_h2yge")
 
 [node name="Enemy" type="Sprite2D" parent="."]
-position = Vector2(753, 347)
+position = Vector2(872, 342)
 texture = ExtResource("3_h2yge")
 
 [node name="Shadow" type="Sprite2D" parent="Enemy"]
