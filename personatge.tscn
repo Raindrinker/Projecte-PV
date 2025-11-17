@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpqxt1wpujfsh"]
+
+[ext_resource type="Script" uid="uid://oayu6s1cd6su" path="res://personatge.gd" id="1_fy3p2"]
+[ext_resource type="Script" uid="uid://dxi3tf4phmci8" path="res://squash.gd" id="2_ed0ax"]
+[ext_resource type="Texture2D" uid="uid://bj7arwkdgmt4x" path="res://sprites/Character_idle.png" id="3_no8j7"]
+[ext_resource type="Texture2D" uid="uid://diqy3ep5pljw5" path="res://sprites/Shadow.png" id="4_w2c2c"]
+
+[node name="Personatge" type="Node2D"]
+scale = Vector2(1.08, 1)
+script = ExtResource("1_fy3p2")
+
+[node name="Body" type="Node2D" parent="."]
+script = ExtResource("2_ed0ax")
+
+[node name="Body" type="Sprite2D" parent="Body"]
+position = Vector2(0, -42)
+texture = ExtResource("3_no8j7")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.39215687)
+z_index = -1
+position = Vector2(1, -22)
+texture = ExtResource("4_w2c2c")
