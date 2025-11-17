@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=4 format=3 uid="uid://dmv02jjjv5c63"]
+
+[ext_resource type="Texture2D" uid="uid://bj7arwkdgmt4x" path="res://sprites/Character_idle.png" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://diqy3ep5pljw5" path="res://sprites/Shadow.png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cr3lsfkdm3vur" path="res://sprites/Creature2.png" id="3_h2yge"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(450, 255)
+texture = ExtResource("1_0xm2m")
+
+[node name="Shadow" type="Sprite2D" parent="Character"]
+self_modulate = Color(1, 1, 1, 0.39215687)
+z_index = -1
+position = Vector2(1, 20)
+texture = ExtResource("2_h2yge")
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(753, 347)
+texture = ExtResource("3_h2yge")
+
+[node name="Shadow" type="Sprite2D" parent="Enemy"]
+self_modulate = Color(1, 1, 1, 0.39215687)
+z_index = -1
+position = Vector2(1, -7)
+texture = ExtResource("2_h2yge")
