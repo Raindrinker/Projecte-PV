@@ -1,6 +1,6 @@
-extends Node2D
+extends RigidBody2D
 
-@export var speed : Vector2 = Vector2.ZERO
+var speed : Vector2 = Vector2.ZERO
 
 var tspeed = Vector2.ZERO
 
@@ -19,7 +19,21 @@ func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_DOWN):
 		speed = Vector2.DOWN
 	
+	if (speed.length() > 0):
+		$AnimationPlayer.play("walk")
+		$Body.idle_speed = 2
+	else:
+		$AnimationPlayer.play("idle")
+		$Body.idle_speed = 1
 	
 	tspeed = lerp(tspeed, speed, 0.3)
 	
-	position += delta * 100. * tspeed
+	move_and_collide(tspeed)
+
+
+func _on_body_entered(body: Node) -> void:
+	modulate = Color.RED
+
+
+func _on_button_pressed() -> void:
+	$Body.stretch()

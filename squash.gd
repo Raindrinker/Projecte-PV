@@ -4,6 +4,7 @@ var t = 0
 var press_squash = 1.
 
 @export var idle_intensity : float = 1
+@export var idle_speed : float = 1
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -12,7 +13,7 @@ func _process(delta: float) -> void:
 	
 	var idle_squash = 1.
 	
-	t += delta*6
+	t += delta*6*idle_speed
 	
 	idle_squash = 1 + sin(t)*0.05*idle_intensity
 	
