@@ -1,4 +1,5 @@
-extends RigidBody2D
+extends CharacterBody2D
+class_name Personatge
 
 var speed : Vector2 = Vector2.ZERO
 
@@ -28,10 +29,11 @@ func _process(delta: float) -> void:
 	
 	tspeed = lerp(tspeed, speed, 0.3)
 	
-	move_and_collide(tspeed)
+	velocity = tspeed * 100
+	move_and_slide()
 
 
-func _on_body_entered(body: Node) -> void:
+func hit(body: Node) -> void:
 	modulate = Color.RED
 
 
