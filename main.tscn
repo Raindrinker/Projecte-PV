@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=11 format=3 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://personatge.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://uy5a53dnsmth" path="res://enemy.gd" id="2_7mycd"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://dxi3tf4phmci8" path="res://squash.gd" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cr3lsfkdm3vur" path="res://sprites/Creature2.png" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://up0xde3nx447" path="res://icon.svg" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://c4oai404dbguj" path="res://camera.gd" id="8_5vw27"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
 radius = 33.01515
@@ -32,6 +35,7 @@ script = ExtResource("3_1bvp3")
 
 [node name="Enemy" type="Sprite2D" parent="Enemy/Body"]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_5vw27")
 position = Vector2(0, -16)
 texture = ExtResource("3_h2yge")
 
@@ -56,3 +60,8 @@ scale = Vector2(1.08, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
 position = Vector2(-0.46296692, 0)
 shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(800, 283)
+script = ExtResource("8_5vw27")
+player = NodePath("../Personatge")
