@@ -2,6 +2,9 @@ extends CharacterBody2D
 class_name Personatge
 
 var speed : Vector2 = Vector2.ZERO
+var speed_modifier : int = 1;
+
+
 
 var tspeed = Vector2.ZERO
 
@@ -29,7 +32,7 @@ func _process(delta: float) -> void:
 	
 	tspeed = lerp(tspeed, speed, 0.3)
 	
-	velocity = tspeed * 100
+	velocity = tspeed * 100 * speed_modifier
 	move_and_slide()
 
 
