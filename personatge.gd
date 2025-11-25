@@ -5,6 +5,8 @@ var speed : Vector2 = Vector2.ZERO
 
 var tspeed = Vector2.ZERO
 
+var push_force = 20
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_SPACE):
@@ -31,7 +33,11 @@ func _process(delta: float) -> void:
 	
 	velocity = tspeed * 100
 	move_and_slide()
-
+	
+	var collision : KinematicCollision2D = get_last_slide_collision()
+	if collision != null:
+		if collision.get_collider() is Caixa:
+			collision.get_collider().apply_central_force(-collision.get_normal() * push_force)
 
 func hit(body: Node) -> void:
 	modulate = Color.RED

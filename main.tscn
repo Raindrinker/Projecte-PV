@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=13 format=3 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://personatge.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://uy5a53dnsmth" path="res://enemy.gd" id="2_7mycd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cr3lsfkdm3vur" path="res://sprites/Creature2.png" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://up0xde3nx447" path="res://icon.svg" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://c4oai404dbguj" path="res://camera.gd" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://vi7kqfv7n3ij" path="res://caixa.gd" id="8_kek77"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 
@@ -15,6 +16,9 @@ radius = 33.01515
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(117.5926, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(128, 129)
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -65,3 +69,18 @@ shape = SubResource("RectangleShape2D_7mycd")
 position = Vector2(800, 283)
 script = ExtResource("8_5vw27")
 player = NodePath("../Personatge")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(852, 140)
+mass = 0.1
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 3.0
+script = ExtResource("8_kek77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_4c57u")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("5_lquwl")
