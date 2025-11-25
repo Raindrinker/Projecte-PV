@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	if tdash <= 0:
 		movement_logic()
 		
-		if Input.is_key_pressed(KEY_SPACE):
+		if Input.is_action_just_pressed("dash"):
 			if speed.length() == 0:
 				$Body.squash()
 			else:
