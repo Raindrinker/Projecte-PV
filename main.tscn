@@ -65,3 +65,5 @@ shape = SubResource("RectangleShape2D_7mycd")
 position = Vector2(800, 283)
 script = ExtResource("8_5vw27")
 player = NodePath("../Personatge")
+
+[connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]
