@@ -3,35 +3,44 @@ class_name Personatge
 
 var speed : Vector2 = Vector2.ZERO
 
+var speed_modifier : float = 1
+
 var tspeed = Vector2.ZERO
 
 var push_force = 20
+var tdash = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_key_pressed(KEY_SPACE):
-		$Body.squash()
+	
+	if tdash <= 0:
+		movement_logic()
 		
-	speed = Vector2.ZERO
-	if Input.is_key_pressed(KEY_RIGHT):
-		speed = Vector2.RIGHT
-	if Input.is_key_pressed(KEY_LEFT):
-		speed = Vector2.LEFT
-	if Input.is_key_pressed(KEY_UP):
-		speed = Vector2.UP
-	if Input.is_key_pressed(KEY_DOWN):
-		speed = Vector2.DOWN
-	
-	if (speed.length() > 0):
-		$AnimationPlayer.play("walk")
-		$Body.idle_speed = 2
+		if Input.is_action_just_pressed("dash"):
+			if speed.length() == 0:
+				$Body.squash()
+			else:
+				speed = speed.normalized() * 12
+				tdash = 0.25
+			
 	else:
-		$AnimationPlayer.play("idle")
-		$Body.idle_speed = 1
+		$Body.squash()
+		tdash-=delta
 	
-	tspeed = lerp(tspeed, speed, 0.3)
+	if tdash <= 0:
+		if (speed.length() > 0):
+			$AnimationPlayer.play("walk")
+			$Body.idle_speed = 2
+		else:
+			$AnimationPlayer.play("idle")
+			$Body.idle_speed = 1
+		
+		tspeed = lerp(tspeed, speed, 0.3)
+		
+		velocity = tspeed * 100 * speed_modifier
+	else:
+		velocity = speed * 100
 	
-	velocity = tspeed * 100
 	move_and_slide()
 	
 	var collision : KinematicCollision2D = get_last_slide_collision()
@@ -41,6 +50,17 @@ func _process(delta: float) -> void:
 
 func hit(body: Node) -> void:
 	modulate = Color.RED
+	
+func movement_logic():
+	speed = Vector2.ZERO
+	if Input.is_action_pressed("move_right"):
+		speed = Vector2.RIGHT
+	if Input.is_action_pressed("move_left"):
+		speed = Vector2.LEFT
+	if Input.is_action_pressed("move_up"):
+		speed = Vector2.UP
+	if Input.is_action_pressed("move_down"):
+		speed = Vector2.DOWN
 
 
 func _on_button_pressed() -> void:
