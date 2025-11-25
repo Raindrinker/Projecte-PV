@@ -7,6 +7,7 @@ var speed_modifier : float = 1
 
 var tspeed = Vector2.ZERO
 
+var push_force = 20
 var tdash = 0
 
 signal take_damage
@@ -43,7 +44,11 @@ func _process(delta: float) -> void:
 		velocity = speed * 100
 	
 	move_and_slide()
-
+	
+	var collision : KinematicCollision2D = get_last_slide_collision()
+	if collision != null:
+		if collision.get_collider() is Caixa:
+			collision.get_collider().apply_central_force(-collision.get_normal() * push_force)
 
 func hit(body: Node) -> void:
 	modulate = Color.RED
