@@ -82,11 +82,12 @@ lock_rotation = true
 linear_damp = 3.0
 script = ExtResource("8_kek77")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(-0.5, 19)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caixa"]
+position = Vector2(-852.5, -121)
 shape = SubResource("RectangleShape2D_4c57u")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Caixa"]
+position = Vector2(-852, -140)
 scale = Vector2(0.8, 1)
 texture = ExtResource("9_kek77")
 
