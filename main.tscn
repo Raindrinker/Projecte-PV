@@ -18,7 +18,7 @@ radius = 33.01515
 size = Vector2(117.5926, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
-size = Vector2(128, 129)
+size = Vector2(128, 128)
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -53,24 +53,25 @@ texture = ExtResource("2_h2yge")
 position = Vector2(1, -12)
 shape = SubResource("CircleShape2D_lquwl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-y_sort_enabled = true
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(221, 250)
-texture = ExtResource("5_lquwl")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
 scale = Vector2(1.08, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-0.46296692, 0)
 shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+y_sort_enabled = true
+scale = Vector2(0.9259259, 1)
+texture = ExtResource("5_lquwl")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(800, 283)
 script = ExtResource("8_5vw27")
 player = NodePath("../Personatge")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="Caixa" type="RigidBody2D" parent="."]
 position = Vector2(852, 140)
 mass = 0.1
 gravity_scale = 0.0
@@ -78,9 +79,8 @@ lock_rotation = true
 linear_damp = 3.0
 script = ExtResource("8_kek77")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(0, -0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caixa"]
 shape = SubResource("RectangleShape2D_4c57u")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Caixa"]
 texture = ExtResource("5_lquwl")
