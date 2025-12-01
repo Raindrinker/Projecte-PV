@@ -113,7 +113,6 @@ y_sort_enabled = true
 script = ExtResource("2_ed0ax")
 
 [node name="Body" type="Sprite2D" parent="Body"]
-self_modulate = Color(1, 0.39607844, 1, 1)
 y_sort_enabled = true
 position = Vector2(0, -42)
 texture = ExtResource("3_no8j7")
