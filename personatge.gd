@@ -10,6 +10,8 @@ var tspeed = Vector2.ZERO
 var push_force = 20
 var tdash = 0
 
+signal take_damage
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
@@ -50,6 +52,8 @@ func _process(delta: float) -> void:
 
 func hit(body: Node) -> void:
 	modulate = Color.RED
+	take_damage.emit()
+	
 	
 func movement_logic():
 	speed = Vector2.ZERO
