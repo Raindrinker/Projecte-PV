@@ -58,14 +58,15 @@ func hit(body: Node) -> void:
 func movement_logic():
 	speed = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
-		speed = Vector2.RIGHT
+		speed += Vector2.RIGHT
 	if Input.is_action_pressed("move_left"):
-		speed = Vector2.LEFT
+		speed += Vector2.LEFT
 	if Input.is_action_pressed("move_up"):
-		speed = Vector2.UP
+		speed += Vector2.UP
 	if Input.is_action_pressed("move_down"):
-		speed = Vector2.DOWN
-
+		speed += Vector2.DOWN
+	
+	speed = speed.normalized()
 
 func _on_button_pressed() -> void:
 	$Body.stretch()
