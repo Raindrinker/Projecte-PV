@@ -12,6 +12,8 @@ var tspeed = Vector2.ZERO
 var push_force = 20
 var tdash = 0
 
+var external_force : Vector2
+
 signal take_damage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,6 +50,9 @@ func _process(delta: float) -> void:
 	else:
 		velocity = speed * 100
 	
+	velocity += external_force
+	external_force *= 0.93
+	
 	move_and_slide()
 	
 	var collision : KinematicCollision2D = get_last_slide_collision()
@@ -59,18 +64,23 @@ func hit(body: Node) -> void:
 	modulate = Color.RED
 	take_damage.emit()
 	
+	var dir = (global_position - body.global_position).normalized()
+	
+	external_force += dir * 500
+	$Body.squash()
 	
 func movement_logic():
 	speed = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
-		speed = Vector2.RIGHT
+		speed += Vector2.RIGHT
 	if Input.is_action_pressed("move_left"):
-		speed = Vector2.LEFT
+		speed += Vector2.LEFT
 	if Input.is_action_pressed("move_up"):
-		speed = Vector2.UP
+		speed += Vector2.UP
 	if Input.is_action_pressed("move_down"):
-		speed = Vector2.DOWN
-
+		speed += Vector2.DOWN
+	
+	speed = speed.normalized()
 
 func _on_button_pressed() -> void:
 	$Body.stretch()
