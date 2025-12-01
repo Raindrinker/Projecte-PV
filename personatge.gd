@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Personatge
 
 var speed : Vector2 = Vector2.ZERO
+@export var stamina : Stamina_Level
+@export var AmountExp = 1
 
 var speed_modifier : float = 1
 
@@ -21,9 +23,11 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("dash"):
 			if speed.length() == 0:
 				$Body.squash()
+
 			else:
-				speed = speed.normalized() * 12
-				tdash = 0.25
+				if stamina.canspend(AmountExp):
+					speed = speed.normalized() * 12
+					tdash = 0.25
 			
 	else:
 		$Body.squash()
@@ -40,6 +44,7 @@ func _process(delta: float) -> void:
 		tspeed = lerp(tspeed, speed, 0.3)
 		
 		velocity = tspeed * 100 * speed_modifier
+		
 	else:
 		velocity = speed * 100
 	
