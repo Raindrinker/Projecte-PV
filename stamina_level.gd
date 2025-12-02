@@ -18,13 +18,12 @@ func _process(delta: float) -> void:
 	
 	if isRestando:
 		stamina -= delta
-	if isRestando == false:
-		if stamina == 0:
+		time = timeOriginal
+	else:
+		if time > 0:
 			time -= delta
-		if time < 0:
+		else:
 			stamina += delta
-			if stamina == staminaOriginal:
-				time = timeOriginal
 		
 	stamina = clamp(stamina, 0, 2)
 	
@@ -32,6 +31,7 @@ func _process(delta: float) -> void:
 func canspend(amount):
 	if stamina >= amount:
 		stamina -= amount
+		time = timeOriginal
 		return true
 	return false
 		
