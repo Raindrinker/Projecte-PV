@@ -110,17 +110,29 @@ z_index = -2
 position = Vector2(949, 292)
 texture = ExtResource("11_efxa6")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Sabias que, el miedo a las palabras largas se llama hipopotomonstrosesquippedaliofobia. "
 [node name="sign" type="Sprite2D" parent="."]
 position = Vector2(799, 102)
 texture = ExtResource("12_ycdy4")
 script = ExtResource("13_w48qg")
 
 [node name="Area2D" type="Area2D" parent="sign"]
+scale = Vector2(-0.88063675, 0.7329722)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sign/Area2D"]
-position = Vector2(8, 58.999996)
-rotation = -1.6379017
-scale = Vector2(8.678857, -9.575112)
+position = Vector2(-5.677722, 85.951416)
+rotation = -1.5870918
+scale = Vector2(6.583811, -5.034087)
 shape = SubResource("CircleShape2D_vivmo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
