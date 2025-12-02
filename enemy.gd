@@ -19,5 +19,4 @@ func _process(delta: float) -> void:
 		if collision.get_collider() is Personatge:
 			collision.get_collider().hit(self)
 			external_force = -dir.normalized() * 500
-			
 	

@@ -11,6 +11,7 @@ var tspeed = Vector2.ZERO
 
 var push_force = 20
 var tdash = 0
+var thit = 0
 
 var external_force : Vector2
 
@@ -23,6 +24,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if select_interactable:
 			select_interactable.interact(self)
+	
+	if thit > 0:
+		thit -= delta
+		if thit <= 0:
+			modulate = Color.WHITE
+	
 	if tdash <= 0:
 		movement_logic()
 		
@@ -63,13 +70,12 @@ func _process(delta: float) -> void:
 	if collision != null:
 		if collision.get_collider() is Caixa:
 			collision.get_collider().apply_central_force(-collision.get_normal() * push_force)
-
+	
 func hit(body: Node) -> void:
+	thit = 0.25
+	var dir = (global_position - body.global_position).normalized()
 	modulate = Color.RED
 	take_damage.emit()
-	
-	var dir = (global_position - body.global_position).normalized()
-	
 	external_force += dir * 500
 	$Body.squash()
 	
