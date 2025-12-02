@@ -1,4 +1,4 @@
 extends Interactable
 
 func interact(player):
-	print("cartel")
+	UI.show_text("Sabias que el miedo a las palabras largas se llama hipopotomonstrosesquippedaliofobia. ")

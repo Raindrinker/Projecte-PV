@@ -1,9 +1,15 @@
 extends CharacterBody2D
 class_name Personatge
 
+signal take_damage
+signal health_update
+
 var speed : Vector2 = Vector2.ZERO
 @export var stamina : Stamina_Level
 @export var AmountExp = 1
+
+@export var maxHealth = 10
+var currentHealth: int
 
 var speed_modifier : float = 1
 
@@ -14,10 +20,12 @@ var tdash = 0
 var thit = 0
 
 var external_force : Vector2
-
+	
 var select_interactable
 
-signal take_damage
+func _ready():
+	currentHealth = maxHealth
+	health_update.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -75,9 +83,13 @@ func hit(body: Node) -> void:
 	thit = 0.25
 	var dir = (global_position - body.global_position).normalized()
 	modulate = Color.RED
+	currentHealth -= 1
 	take_damage.emit()
+	health_update.emit()
+	print(currentHealth)
 	external_force += dir * 500
 	$Body.squash()
+	
 	
 func movement_logic():
 	speed = Vector2.ZERO
