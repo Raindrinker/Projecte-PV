@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=23 format=4 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://personatge.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://uy5a53dnsmth" path="res://enemy.gd" id="2_7mycd"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://b4wygavfh26fr" path="res://sprites/Button1.png" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://cpyh8gymdh0j1" path="res://sprites/Sign.png" id="12_ycdy4"]
 [ext_resource type="Script" uid="uid://gicvawwf4ghr" path="res://sign.gd" id="13_w48qg"]
+[ext_resource type="TileSet" uid="uid://1dmroakv21jc" path="res://tileset.tres" id="14_w48qg"]
+[ext_resource type="Texture2D" uid="uid://kg5bcpx3msxk" path="res://sprites/Tower1.png" id="15_2cqfq"]
+[ext_resource type="Script" uid="uid://cgt8g6rivxvbb" path="res://door.gd" id="16_yaehf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 
@@ -27,6 +30,9 @@ size = Vector2(79, 80)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vivmo"]
 radius = 11.443709
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cqfq"]
+size = Vector2(102, 202)
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -97,9 +103,10 @@ scale = Vector2(0.8, 1)
 texture = ExtResource("9_kek77")
 
 [node name="Checkerboard" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.6509804)
 z_index = -10
 texture_repeat = 2
-position = Vector2(670, 410)
+position = Vector2(762, 281)
 texture = ExtResource("10_4c57u")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
@@ -120,6 +127,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Sabias que, el miedo a las palabras largas se llama hipopotomonstrosesquippedaliofobia. "
+
 [node name="sign" type="Sprite2D" parent="."]
 position = Vector2(799, 102)
 texture = ExtResource("12_ycdy4")
@@ -134,6 +142,25 @@ rotation = -1.5870918
 scale = Vector2(6.583811, -5.034087)
 shape = SubResource("CircleShape2D_vivmo")
 
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(689, 324.00003)
+scale = Vector2(2.5710034, 1.6240765)
+tile_map_data = PackedByteArray("AAD///v/AAADAAAAAAD+//v/AAADAAAAAAD9//v/AAADAAAAAAD8//v/AAADAAAAAAAAAPv/AAADAAAAAAABAPv/AAADAAAAAAACAPv/AAADAAAAAAADAPv/AAADAAAAAAAEAPv/AAADAAAAAAAFAPv/AAAAAAAAAAAFAAMAAAADAAMAAAAFAAIAAAADAAIAAAAFAAEAAAADAAIAAAAFAAAAAAADAAIAAAAFAP//AAADAAIAAAAFAP7/AAADAAIAAAAFAP3/AAADAAIAAAD7/wMAAAAAAAIAAAAEAAMAAAABAAIAAAADAAMAAAABAAIAAAACAAMAAAABAAIAAAABAAMAAAABAAIAAAAAAAMAAAABAAIAAAD//wMAAAABAAIAAAD+/wMAAAABAAIAAAD9/wMAAAABAAIAAAD8/wMAAAABAAIAAAD7/wIAAAABAAAAAAD7/wEAAAABAAAAAAD7/wAAAAABAAAAAAAFAPz/AAADAAIAAAD7//v/AAABAAMAAAD7//z/AAABAAAAAAD7//3/AAABAAEAAAD7////AAACAAAAADA=")
+tile_set = ExtResource("14_w48qg")
+
+[node name="door" type="Sprite2D" parent="."]
+position = Vector2(-85, 152)
+texture = ExtResource("15_2cqfq")
+script = ExtResource("16_yaehf")
+
+[node name="Area2D" type="Area2D" parent="door"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door/Area2D"]
+position = Vector2(-1, 18)
+shape = SubResource("RectangleShape2D_2cqfq")
+
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]
 [connection signal="body_entered" from="sign/Area2D" to="sign" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="sign/Area2D" to="sign" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="door/Area2D" to="door" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="door/Area2D" to="door" method="_on_area_2d_body_exited"]
