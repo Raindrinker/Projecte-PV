@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 	if thit > 0:
 		thit -= delta
 		if thit <= 0:
-			modulate = Color.WHITE
+			$Body.modulate = Color.WHITE
 	
 	if tdash <= 0:
 		movement_logic()
@@ -83,7 +83,7 @@ func _process(delta: float) -> void:
 func hit(body: Node) -> void:
 	thit = 0.25
 	var dir = (global_position - body.global_position).normalized()
-	modulate = Color.RED
+	$Body.modulate = Color.RED
 	currentHealth -= 1
 	take_damage.emit()
 	health_update.emit()
