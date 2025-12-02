@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1yw38rftmf7l"]
+
+[ext_resource type="Script" uid="uid://bp7yexqbj5g73" path="res://canvas_layer.gd" id="1_b3bc3"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_b3bc3")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 81.0
+offset_top = 449.0
+offset_right = 1034.0
+offset_bottom = 625.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 30.0
+offset_right = 718.0
+offset_bottom = 53.0
+text = "Sabias que, el miedo a las palabras largas se llama hipopotomonstrosesquippedaliofobia. "

@@ -22,6 +22,7 @@ var thit = 0
 var external_force : Vector2
 	
 var select_interactable
+var keys = []
 
 func _ready():
 	currentHealth = maxHealth
@@ -106,3 +107,7 @@ func movement_logic():
 
 func _on_button_pressed() -> void:
 	$Body.stretch()
+
+func add_key(id):
+	if id not in keys:
+		keys.append(id)
