@@ -109,6 +109,17 @@ z_index = -2
 position = Vector2(949, 292)
 texture = ExtResource("11_efxa6")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Sabias que, el miedo a las palabras largas se llama hipopotomonstrosesquippedaliofobia. "
 [node name="sign" type="Sprite2D" parent="."]
 position = Vector2(799, 102)
 texture = ExtResource("12_ycdy4")
