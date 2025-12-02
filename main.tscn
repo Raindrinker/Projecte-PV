@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=24 format=4 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://personatge.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://uy5a53dnsmth" path="res://enemy.gd" id="2_7mycd"]
@@ -13,10 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://b4wygavfh26fr" path="res://sprites/Button1.png" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://cpyh8gymdh0j1" path="res://sprites/Sign.png" id="12_ycdy4"]
 [ext_resource type="Script" uid="uid://gicvawwf4ghr" path="res://sign.gd" id="13_w48qg"]
-[ext_resource type="TileSet" uid="uid://1dmroakv21jc" path="res://tileset.tres" id="14_w48qg"]
+[ext_resource type="Script" path="res://HP_bar.gd" id="14_w48qg"]
 [ext_resource type="Texture2D" uid="uid://kg5bcpx3msxk" path="res://sprites/Tower1.png" id="15_2cqfq"]
+[ext_resource type="TileSet" uid="uid://1dmroakv21jc" path="res://tileset.tres" id="15_yaehf"]
 [ext_resource type="Script" uid="uid://cgt8g6rivxvbb" path="res://door.gd" id="16_yaehf"]
-[ext_resource type="Script" uid="uid://cpou1suvwk4dm" path="res://HP_bar.gd" id="14_w48qg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 
@@ -129,6 +129,13 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Sabias que, el miedo a las palabras largas se llama hipopotomonstrosesquippedaliofobia. "
 
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("personatge")]
+offset_right = 550.0
+offset_bottom = 115.0
+step = 1.0
+script = ExtResource("14_w48qg")
+personatge = NodePath("../../Personatge")
+
 [node name="sign" type="Sprite2D" parent="."]
 position = Vector2(799, 102)
 texture = ExtResource("12_ycdy4")
@@ -147,7 +154,7 @@ shape = SubResource("CircleShape2D_vivmo")
 position = Vector2(689, 324.00003)
 scale = Vector2(2.5710034, 1.6240765)
 tile_map_data = PackedByteArray("AAD///v/AAADAAAAAAD+//v/AAADAAAAAAD9//v/AAADAAAAAAD8//v/AAADAAAAAAAAAPv/AAADAAAAAAABAPv/AAADAAAAAAACAPv/AAADAAAAAAADAPv/AAADAAAAAAAEAPv/AAADAAAAAAAFAPv/AAAAAAAAAAAFAAMAAAADAAMAAAAFAAIAAAADAAIAAAAFAAEAAAADAAIAAAAFAAAAAAADAAIAAAAFAP//AAADAAIAAAAFAP7/AAADAAIAAAAFAP3/AAADAAIAAAD7/wMAAAAAAAIAAAAEAAMAAAABAAIAAAADAAMAAAABAAIAAAACAAMAAAABAAIAAAABAAMAAAABAAIAAAAAAAMAAAABAAIAAAD//wMAAAABAAIAAAD+/wMAAAABAAIAAAD9/wMAAAABAAIAAAD8/wMAAAABAAIAAAD7/wIAAAABAAAAAAD7/wEAAAABAAAAAAD7/wAAAAABAAAAAAAFAPz/AAADAAIAAAD7//v/AAABAAMAAAD7//z/AAABAAAAAAD7//3/AAABAAEAAAD7////AAACAAAAADA=")
-tile_set = ExtResource("14_w48qg")
+tile_set = ExtResource("15_yaehf")
 
 [node name="door" type="Sprite2D" parent="."]
 position = Vector2(-85, 152)
@@ -159,14 +166,8 @@ script = ExtResource("16_yaehf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door/Area2D"]
 position = Vector2(-1, 18)
 shape = SubResource("RectangleShape2D_2cqfq")
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("personatge")]
-offset_right = 550.0
-offset_bottom = 115.0
-step = 1.0
-script = ExtResource("14_w48qg")
-personatge = NodePath("../../Personatge")
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]
 [connection signal="body_entered" from="sign/Area2D" to="sign" method="_on_area_2d_body_entered"]
