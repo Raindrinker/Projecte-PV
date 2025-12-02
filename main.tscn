@@ -15,8 +15,8 @@
 [ext_resource type="Script" uid="uid://gicvawwf4ghr" path="res://sign.gd" id="13_w48qg"]
 [ext_resource type="Script" path="res://HP_bar.gd" id="14_w48qg"]
 [ext_resource type="Texture2D" uid="uid://kg5bcpx3msxk" path="res://sprites/Tower1.png" id="15_2cqfq"]
-[ext_resource type="TileSet" uid="uid://1dmroakv21jc" path="res://tileset.tres" id="15_yaehf"]
-[ext_resource type="Script" uid="uid://cgt8g6rivxvbb" path="res://door.gd" id="16_yaehf"]
+[ext_resource type="TileSet" uid="uid://bywgwy8d2sptc" path="res://tileset.tres" id="15_yaehf"]
+[ext_resource type="Script" path="res://door.gd" id="16_yaehf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 
@@ -118,16 +118,6 @@ position = Vector2(949, 292)
 texture = ExtResource("11_efxa6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Sabias que, el miedo a las palabras largas se llama hipopotomonstrosesquippedaliofobia. "
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("personatge")]
 offset_right = 550.0
