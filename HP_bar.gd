@@ -14,6 +14,8 @@ func _ready():
 		$HBoxContainer.add_child(heart)
 		hearts.append(heart)
 	
+	hearts = $HBoxContainer.get_children()
+	
 	if personatge:
 		personatge.health_update.connect(update_healthBar)
 		update_healthBar()
