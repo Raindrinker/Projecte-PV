@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=20 format=3 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://personatge.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://uy5a53dnsmth" path="res://enemy.gd" id="2_7mycd"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b4wygavfh26fr" path="res://sprites/Button1.png" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://cpyh8gymdh0j1" path="res://sprites/Sign.png" id="12_ycdy4"]
 [ext_resource type="Script" uid="uid://gicvawwf4ghr" path="res://sign.gd" id="13_w48qg"]
+[ext_resource type="Script" uid="uid://cpou1suvwk4dm" path="res://HP_bar.gd" id="14_w48qg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 
@@ -99,7 +100,7 @@ texture = ExtResource("9_kek77")
 [node name="Checkerboard" type="Sprite2D" parent="."]
 z_index = -10
 texture_repeat = 2
-position = Vector2(670, 410)
+position = Vector2(1110, 446)
 texture = ExtResource("10_4c57u")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
@@ -121,6 +122,15 @@ position = Vector2(8, 58.999996)
 rotation = -1.6379017
 scale = Vector2(8.678857, -9.575112)
 shape = SubResource("CircleShape2D_vivmo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("personatge")]
+offset_right = 550.0
+offset_bottom = 115.0
+step = 1.0
+script = ExtResource("14_w48qg")
+personatge = NodePath("../../Personatge")
 
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]
 [connection signal="body_entered" from="sign/Area2D" to="sign" method="_on_area_2d_body_entered"]
