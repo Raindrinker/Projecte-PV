@@ -13,9 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://b4wygavfh26fr" path="res://sprites/Button1.png" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://cpyh8gymdh0j1" path="res://sprites/Sign.png" id="12_ycdy4"]
 [ext_resource type="Script" uid="uid://gicvawwf4ghr" path="res://sign.gd" id="13_w48qg"]
-[ext_resource type="Script" path="res://HP_bar.gd" id="14_w48qg"]
+[ext_resource type="Script" uid="uid://cpou1suvwk4dm" path="res://HP_bar.gd" id="14_w48qg"]
 [ext_resource type="Texture2D" uid="uid://kg5bcpx3msxk" path="res://sprites/Tower1.png" id="15_2cqfq"]
-[ext_resource type="TileSet" uid="uid://1dmroakv21jc" path="res://tileset.tres" id="15_yaehf"]
+[ext_resource type="TileSet" uid="uid://bywgwy8d2sptc" path="res://tileset.tres" id="15_yaehf"]
 [ext_resource type="Script" uid="uid://cgt8g6rivxvbb" path="res://door.gd" id="16_yaehf"]
 [ext_resource type="Texture2D" uid="uid://1yw15fwh1opb" path="res://sprites/Arrow.png" id="18_cegan"]
 [ext_resource type="Script" uid="uid://5yey0pw7ucd7" path="res://key.gd" id="19_82xsv"]
@@ -35,7 +35,7 @@ size = Vector2(79, 80)
 radius = 11.443709
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cqfq"]
-size = Vector2(102, 202)
+size = Vector2(170, 277)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_getpj"]
 size = Vector2(70, 21)
@@ -146,6 +146,7 @@ scale = Vector2(6.583811, -5.034087)
 shape = SubResource("CircleShape2D_vivmo")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
 position = Vector2(689, 324.00003)
 scale = Vector2(2.5710034, 1.6240765)
 tile_map_data = PackedByteArray("AAD///v/AAADAAAAAAD+//v/AAADAAAAAAD9//v/AAADAAAAAAD8//v/AAADAAAAAAAAAPv/AAADAAAAAAABAPv/AAADAAAAAAACAPv/AAADAAAAAAADAPv/AAADAAAAAAAEAPv/AAADAAAAAAAFAPv/AAAAAAAAAAAFAAMAAAADAAMAAAAFAAIAAAADAAIAAAAFAAEAAAADAAIAAAAFAAAAAAADAAIAAAAFAP//AAADAAIAAAAFAP7/AAADAAIAAAAFAP3/AAADAAIAAAD7/wMAAAAAAAIAAAAEAAMAAAABAAIAAAADAAMAAAABAAIAAAACAAMAAAABAAIAAAABAAMAAAABAAIAAAAAAAMAAAABAAIAAAD//wMAAAABAAIAAAD+/wMAAAABAAIAAAD9/wMAAAABAAIAAAD8/wMAAAABAAIAAAD7/wIAAAABAAAAAAD7/wEAAAABAAAAAAD7/wAAAAABAAAAAAAFAPz/AAADAAIAAAD7//v/AAABAAMAAAD7//z/AAABAAAAAAD7//3/AAABAAEAAAD7////AAACAAAAADA=")
@@ -162,8 +163,12 @@ key_id = "blue"
 [node name="Area2D" type="Area2D" parent="door"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door/Area2D"]
-position = Vector2(-1, 18)
+position = Vector2(5, 27.5)
 shape = SubResource("RectangleShape2D_2cqfq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="door"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door/StaticBody2D"]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

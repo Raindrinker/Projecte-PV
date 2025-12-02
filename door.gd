@@ -31,3 +31,4 @@ func can_open(player) -> bool:
 func open():
 	is_open = true
 	print("Obrint porta")
+	$StaticBody2D.process_mode = Node.PROCESS_MODE_DISABLED
