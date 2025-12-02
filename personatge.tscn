@@ -103,10 +103,11 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_no8j7"]
 radius = 32.422832
 
-[node name="Personatge" type="CharacterBody2D"]
+[node name="Personatge" type="CharacterBody2D" node_paths=PackedStringArray("stamina")]
 y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_fy3p2")
+stamina = NodePath("StaminaLevel")
 
 [node name="Body" type="Node2D" parent="."]
 y_sort_enabled = true

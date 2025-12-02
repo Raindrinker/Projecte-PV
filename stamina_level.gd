@@ -2,7 +2,10 @@ extends Sprite2D
 class_name Stamina_Level
 
 @export var stamina : float = 2.
+var staminaOriginal = stamina
 var isRestando = false
+@export var time : float = 1
+var timeOriginal = time
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,10 +18,22 @@ func _process(delta: float) -> void:
 	
 	if isRestando:
 		stamina -= delta
-	else:
-		stamina += delta
+	if isRestando == false:
+		if stamina == 0:
+			time -= delta
+		if time < 0:
+			stamina += delta
+			if stamina == staminaOriginal:
+				time = timeOriginal
 		
 	stamina = clamp(stamina, 0, 2)
 	
 	print(stamina)
+	
+func canspend(amount):
+	if stamina >= amount:
+		stamina -= amount
+		return true
+	return false
+		
 	
