@@ -28,7 +28,6 @@ func _process(delta: float) -> void:
 		
 	stamina = clamp(stamina, 0, 2)
 	
-	print(stamina)
 	
 func canspend(amount):
 	if stamina >= amount:

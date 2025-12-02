@@ -14,11 +14,15 @@ var tdash = 0
 
 var external_force : Vector2
 
+var select_interactable
+
 signal take_damage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	if Input.is_action_just_pressed("interact"):
+		if select_interactable:
+			select_interactable.interact(self)
 	if tdash <= 0:
 		movement_logic()
 		
