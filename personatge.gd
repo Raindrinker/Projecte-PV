@@ -59,7 +59,6 @@ func _process(delta: float) -> void:
 	if collision != null:
 		if collision.get_collider() is Caixa:
 			collision.get_collider().apply_central_force(-collision.get_normal() * push_force)
-
 func hit(body: Node) -> void:
 	modulate = Color.RED
 	take_damage.emit()
