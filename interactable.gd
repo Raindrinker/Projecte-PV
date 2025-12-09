@@ -13,6 +13,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		if body.select_interactable == self:
 			body.select_interactable = null
 			modulate = Color.WHITE
+			UI.hide_text();
 			
 	
 func interact(player):
