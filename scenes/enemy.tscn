@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://4jqichsfbqgw"]
 
-[ext_resource type="Script" uid="uid://uy5a53dnsmth" path="res://enemy.gd" id="1_iifgy"]
-[ext_resource type="Script" uid="uid://dxi3tf4phmci8" path="res://squash.gd" id="2_epg4t"]
+[ext_resource type="Script" uid="uid://uy5a53dnsmth" path="res://scripts/enemy.gd" id="1_iifgy"]
+[ext_resource type="Script" uid="uid://dxi3tf4phmci8" path="res://scripts/squash.gd" id="2_epg4t"]
 [ext_resource type="Texture2D" uid="uid://cr3lsfkdm3vur" path="res://sprites/Creature2.png" id="3_3yqyl"]
 [ext_resource type="Texture2D" uid="uid://diqy3ep5pljw5" path="res://sprites/Shadow.png" id="4_wujgv"]
 

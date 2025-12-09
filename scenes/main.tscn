@@ -1,28 +1,27 @@
-[gd_scene load_steps=34 format=4 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=29 format=4 uid="uid://dmv02jjjv5c63"]
 
-[ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://personatge.tscn" id="1_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://4jqichsfbqgw" path="res://enemy.tscn" id="2_cegan"]
-[ext_resource type="Texture2D" uid="uid://up0xde3nx447" path="res://icon.svg" id="5_lquwl"]
-[ext_resource type="Script" uid="uid://c4oai404dbguj" path="res://camera.gd" id="8_5vw27"]
-[ext_resource type="Script" uid="uid://vi7kqfv7n3ij" path="res://caixa.gd" id="8_kek77"]
-[ext_resource type="Texture2D" uid="uid://1dvi46le7j5o" path="res://sprites/Crate.png" id="9_kek77"]
-[ext_resource type="Texture2D" uid="uid://dltflf5dtrbt1" path="res://sprites/checkerboard.png" id="10_4c57u"]
-[ext_resource type="Texture2D" uid="uid://b4wygavfh26fr" path="res://sprites/Button1.png" id="11_efxa6"]
-[ext_resource type="Texture2D" uid="uid://cpyh8gymdh0j1" path="res://sprites/Sign.png" id="12_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://b2700iinhq1py" path="res://HeartHealthBar.tscn" id="13_vivmo"]
-[ext_resource type="Script" uid="uid://gicvawwf4ghr" path="res://sign.gd" id="13_w48qg"]
-[ext_resource type="Script" uid="uid://cg6yqvrdb014m" path="res://coin_counter.gd" id="14_1u8w0"]
-[ext_resource type="Script" uid="uid://cpou1suvwk4dm" path="res://HP_bar.gd" id="14_w48qg"]
-[ext_resource type="TileSet" uid="uid://bywgwy8d2sptc" path="res://tileset.tres" id="15_yaehf"]
-[ext_resource type="PackedScene" uid="uid://c1yw38rftmf7l" path="res://UI.tscn" id="16_getpj"]
-[ext_resource type="Script" uid="uid://cgt8g6rivxvbb" path="res://door.gd" id="16_yaehf"]
-[ext_resource type="Texture2D" uid="uid://cqjvlbxd81nlc" path="res://sprites/Door_side_locked.png" id="18_1u8w0"]
-[ext_resource type="Script" uid="uid://5yey0pw7ucd7" path="res://key.gd" id="19_82xsv"]
-[ext_resource type="Texture2D" uid="uid://bv12plej0ce54" path="res://sprites/Door_side_open.png" id="20_0odxb"]
-[ext_resource type="Texture2D" uid="uid://dhtqmnii733wg" path="res://sprites/Key.png" id="20_d13ii"]
-[ext_resource type="Texture2D" uid="uid://0kafck2o4i15" path="res://sprites/Door_front_closed.png" id="22_d13ii"]
-[ext_resource type="PackedScene" uid="uid://dntyfq35bplyf" path="res://coin.tscn" id="24_1u8w0"]
-[ext_resource type="Script" path="res://coin.gd" id="23_d13ii"]
+[ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://scenes/personatge.tscn" id="1_jscy8"]
+[ext_resource type="PackedScene" uid="uid://4jqichsfbqgw" path="res://scenes/enemy.tscn" id="2_pm3ni"]
+[ext_resource type="Texture2D" uid="uid://up0xde3nx447" path="res://icon.svg" id="3_y6deb"]
+[ext_resource type="Script" uid="uid://c4oai404dbguj" path="res://scripts/camera.gd" id="4_og1vs"]
+[ext_resource type="Script" uid="uid://vi7kqfv7n3ij" path="res://scripts/caixa.gd" id="5_2wyq8"]
+[ext_resource type="Texture2D" uid="uid://1dvi46le7j5o" path="res://sprites/Crate.png" id="6_vxglm"]
+[ext_resource type="Texture2D" uid="uid://dltflf5dtrbt1" path="res://sprites/checkerboard.png" id="7_2f3dj"]
+[ext_resource type="Texture2D" uid="uid://b4wygavfh26fr" path="res://sprites/Button1.png" id="8_yq6so"]
+[ext_resource type="Script" uid="uid://cpou1suvwk4dm" path="res://scripts/HP_bar.gd" id="9_fv21b"]
+[ext_resource type="PackedScene" uid="uid://b2700iinhq1py" path="res://scenes/HeartHealthBar.tscn" id="10_tel4y"]
+[ext_resource type="Script" uid="uid://cg6yqvrdb014m" path="res://scripts/coin_counter.gd" id="11_qkpxi"]
+[ext_resource type="Texture2D" uid="uid://cpyh8gymdh0j1" path="res://sprites/Sign.png" id="12_5q0nq"]
+[ext_resource type="Script" uid="uid://gicvawwf4ghr" path="res://scripts/sign.gd" id="13_dgi5k"]
+[ext_resource type="PackedScene" uid="uid://c1yw38rftmf7l" path="res://scenes/UI.tscn" id="14_j8jky"]
+[ext_resource type="TileSet" uid="uid://bywgwy8d2sptc" path="res://tileset.tres" id="15_kmb1v"]
+[ext_resource type="Texture2D" uid="uid://cqjvlbxd81nlc" path="res://sprites/Door_side_locked.png" id="16_fuf3a"]
+[ext_resource type="Script" uid="uid://cgt8g6rivxvbb" path="res://scripts/door.gd" id="17_pibwh"]
+[ext_resource type="Texture2D" uid="uid://bv12plej0ce54" path="res://sprites/Door_side_open.png" id="18_c6pm6"]
+[ext_resource type="Texture2D" uid="uid://dhtqmnii733wg" path="res://sprites/Key.png" id="19_5he1u"]
+[ext_resource type="Script" uid="uid://5yey0pw7ucd7" path="res://scripts/key.gd" id="20_5poiv"]
+[ext_resource type="Texture2D" uid="uid://0kafck2o4i15" path="res://sprites/Door_front_closed.png" id="21_2cjbq"]
+[ext_resource type="PackedScene" uid="uid://dntyfq35bplyf" path="res://scenes/coin.tscn" id="22_chjal"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(117.5926, 128)
@@ -45,23 +44,23 @@ size = Vector2(70, 21)
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Personatge" parent="." node_paths=PackedStringArray("coin_counter") instance=ExtResource("1_1bvp3")]
+[node name="Personatge" parent="." node_paths=PackedStringArray("coin_counter") instance=ExtResource("1_jscy8")]
 position = Vector2(545, 182)
 coin_counter = NodePath("../CanvasLayer/CoinCounter")
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_cegan")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_pm3ni")]
 position = Vector2(616, 346)
 chasee = NodePath("../Personatge")
 
-[node name="Enemy2" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_cegan")]
+[node name="Enemy2" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_pm3ni")]
 position = Vector2(534, 344)
 chasee = NodePath("../Personatge")
 
-[node name="Enemy3" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_cegan")]
+[node name="Enemy3" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_pm3ni")]
 position = Vector2(685, 296)
 chasee = NodePath("../Personatge")
 
-[node name="Enemy4" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_cegan")]
+[node name="Enemy4" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_pm3ni")]
 position = Vector2(456, 300)
 chasee = NodePath("../Personatge")
 
@@ -76,11 +75,11 @@ shape = SubResource("RectangleShape2D_7mycd")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 y_sort_enabled = true
 scale = Vector2(0.9259259, 1)
-texture = ExtResource("5_lquwl")
+texture = ExtResource("3_y6deb")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(800, 283)
-script = ExtResource("8_5vw27")
+script = ExtResource("4_og1vs")
 player = NodePath("../Personatge")
 
 [node name="Caixa" type="RigidBody2D" parent="."]
@@ -89,7 +88,7 @@ mass = 0.1
 gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 3.0
-script = ExtResource("8_kek77")
+script = ExtResource("5_2wyq8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Caixa"]
 position = Vector2(-852.5, -121)
@@ -98,21 +97,21 @@ shape = SubResource("RectangleShape2D_4c57u")
 [node name="Sprite2D" type="Sprite2D" parent="Caixa"]
 position = Vector2(-852, -140)
 scale = Vector2(0.8, 1)
-texture = ExtResource("9_kek77")
+texture = ExtResource("6_vxglm")
 
 [node name="Checkerboard" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.6509804)
 z_index = -10
 texture_repeat = 2
 position = Vector2(762, 281)
-texture = ExtResource("10_4c57u")
+texture = ExtResource("7_2f3dj")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
 
 [node name="Button1" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(949, 292)
-texture = ExtResource("11_efxa6")
+texture = ExtResource("8_yq6so")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -121,9 +120,9 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 550.0
 offset_bottom = 115.0
-script = ExtResource("14_w48qg")
+script = ExtResource("9_fv21b")
 personatge = NodePath("../../Personatge")
-heart_scn = ExtResource("13_vivmo")
+heart_scn = ExtResource("10_tel4y")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HealthBar"]
 layout_mode = 0
@@ -136,12 +135,12 @@ offset_left = 1006.0
 offset_top = 10.0
 offset_right = 1130.0
 offset_bottom = 102.0
-script = ExtResource("14_1u8w0")
+script = ExtResource("11_qkpxi")
 
 [node name="sign" type="Sprite2D" parent="."]
 position = Vector2(799, 102)
-texture = ExtResource("12_ycdy4")
-script = ExtResource("13_w48qg")
+texture = ExtResource("12_5q0nq")
+script = ExtResource("13_dgi5k")
 
 [node name="Area2D" type="Area2D" parent="sign"]
 scale = Vector2(-0.88063675, 0.7329722)
@@ -152,23 +151,23 @@ rotation = -1.5870918
 scale = Vector2(6.583811, -5.034087)
 shape = SubResource("CircleShape2D_vivmo")
 
-[node name="UI" parent="." instance=ExtResource("16_getpj")]
+[node name="UI" parent="." instance=ExtResource("14_j8jky")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(689, 324.00003)
 scale = Vector2(2.5710034, 1.6240765)
 tile_map_data = PackedByteArray("AAD///v/AAADAAAAAAD+//v/AAADAAAAAAD9//v/AAADAAAAAAD8//v/AAADAAAAAAAAAPv/AAADAAAAAAABAPv/AAADAAAAAAACAPv/AAADAAAAAAADAPv/AAADAAAAAAAEAPv/AAADAAAAAAAFAPv/AAAAAAAAAAAFAAMAAAADAAMAAAAFAAIAAAADAAIAAAAFAAEAAAADAAIAAAAFAAAAAAADAAIAAAAFAP//AAADAAIAAAAFAP7/AAADAAIAAAAFAP3/AAADAAIAAAD7/wMAAAAAAAIAAAAEAAMAAAABAAIAAAADAAMAAAABAAIAAAACAAMAAAABAAIAAAABAAMAAAABAAIAAAAAAAMAAAABAAIAAAD//wMAAAABAAIAAAD+/wMAAAABAAIAAAD9/wMAAAABAAIAAAD8/wMAAAABAAIAAAD7/wIAAAABAAAAAAD7/wEAAAABAAAAAAD7/wAAAAABAAAAAAAFAPz/AAADAAIAAAD7//v/AAABAAMAAAD7//z/AAABAAAAAAD7//3/AAABAAEAAAD7////AAACAAIAAAA=")
-tile_set = ExtResource("15_yaehf")
+tile_set = ExtResource("15_kmb1v")
 
 [node name="door" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(-90, 144)
-texture = ExtResource("18_1u8w0")
-script = ExtResource("16_yaehf")
+texture = ExtResource("16_fuf3a")
+script = ExtResource("17_pibwh")
 requiresCondition = true
 needs_key = true
 key_id = "blue"
-openText = ExtResource("20_0odxb")
+openText = ExtResource("18_c6pm6")
 
 [node name="Area2D" type="Area2D" parent="door"]
 
@@ -184,8 +183,8 @@ shape = SubResource("RectangleShape2D_ryguw")
 
 [node name="Key" type="Sprite2D" parent="."]
 position = Vector2(-1, -7)
-texture = ExtResource("20_d13ii")
-script = ExtResource("19_82xsv")
+texture = ExtResource("19_5he1u")
+script = ExtResource("20_5poiv")
 key_id = "blue"
 
 [node name="Area2D" type="Area2D" parent="Key"]
@@ -197,36 +196,36 @@ shape = SubResource("RectangleShape2D_getpj")
 [node name="DoorFrontClosed" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(503, -217.00002)
-texture = ExtResource("22_d13ii")
+texture = ExtResource("21_2cjbq")
 
-[node name="Coin" parent="." instance=ExtResource("24_1u8w0")]
+[node name="Coin" parent="." instance=ExtResource("22_chjal")]
 position = Vector2(281, -50)
 
-[node name="Coin2" parent="." instance=ExtResource("24_1u8w0")]
+[node name="Coin2" parent="." instance=ExtResource("22_chjal")]
 position = Vector2(778, 279)
 
-[node name="Coin3" parent="." instance=ExtResource("24_1u8w0")]
+[node name="Coin3" parent="." instance=ExtResource("22_chjal")]
 position = Vector2(380, 367)
 
-[node name="Coin4" parent="." instance=ExtResource("24_1u8w0")]
+[node name="Coin4" parent="." instance=ExtResource("22_chjal")]
 position = Vector2(1006, -55)
 
-[node name="Coin5" parent="." instance=ExtResource("24_1u8w0")]
+[node name="Coin5" parent="." instance=ExtResource("22_chjal")]
 position = Vector2(1209, 202)
 
-[node name="Coin6" parent="." instance=ExtResource("24_1u8w0")]
+[node name="Coin6" parent="." instance=ExtResource("22_chjal")]
 position = Vector2(368.5, 58.5)
 
-[node name="Coin7" parent="." instance=ExtResource("24_1u8w0")]
+[node name="Coin7" parent="." instance=ExtResource("22_chjal")]
 position = Vector2(865.5, 387.5)
 
-[node name="Coin8" parent="." instance=ExtResource("24_1u8w0")]
+[node name="Coin8" parent="." instance=ExtResource("22_chjal")]
 position = Vector2(467.5, 475.5)
 
-[node name="Coin9" parent="." instance=ExtResource("24_1u8w0")]
+[node name="Coin9" parent="." instance=ExtResource("22_chjal")]
 position = Vector2(1093.5, 53.5)
 
-[node name="Coin10" parent="." instance=ExtResource("24_1u8w0")]
+[node name="Coin10" parent="." instance=ExtResource("22_chjal")]
 position = Vector2(1296.5, 310.5)
 
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]

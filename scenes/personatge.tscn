@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://bpqxt1wpujfsh"]
 
-[ext_resource type="Script" uid="uid://oayu6s1cd6su" path="res://personatge.gd" id="1_fy3p2"]
-[ext_resource type="Script" uid="uid://dxi3tf4phmci8" path="res://squash.gd" id="2_ed0ax"]
+[ext_resource type="Script" uid="uid://oayu6s1cd6su" path="res://scripts/personatge.gd" id="1_fy3p2"]
+[ext_resource type="Script" uid="uid://dxi3tf4phmci8" path="res://scripts/squash.gd" id="2_ed0ax"]
 [ext_resource type="Texture2D" uid="uid://bj7arwkdgmt4x" path="res://sprites/Character_idle.png" id="3_no8j7"]
 [ext_resource type="Texture2D" uid="uid://diqy3ep5pljw5" path="res://sprites/Shadow.png" id="4_w2c2c"]
 [ext_resource type="Texture2D" uid="uid://cxqumuhgb8y4w" path="res://sprites/quadradetTurquesa.png" id="5_ahaul"]
 [ext_resource type="Texture2D" uid="uid://xykkwybyfs5p" path="res://sprites/Character_walk1.png" id="5_no8j7"]
-[ext_resource type="Script" uid="uid://dbum4fwse1wto" path="res://stamina_level.gd" id="6_3mkq8"]
+[ext_resource type="Script" uid="uid://dbum4fwse1wto" path="res://scripts/stamina_level.gd" id="6_3mkq8"]
 [ext_resource type="Texture2D" uid="uid://b8j5r6ti3g1a1" path="res://sprites/Character_walk2.png" id="6_w2c2c"]
-[ext_resource type="Script" uid="uid://di285ny18tdtm" path="res://sprint.gd" id="7_w2c2c"]
+[ext_resource type="Script" uid="uid://di285ny18tdtm" path="res://scripts/sprint.gd" id="7_w2c2c"]
 
 [sub_resource type="Animation" id="Animation_3mkq8"]
 length = 0.001
