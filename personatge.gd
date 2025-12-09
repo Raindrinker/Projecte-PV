@@ -18,6 +18,7 @@ var tspeed = Vector2.ZERO
 var push_force = 20
 var tdash = 0
 var thit = 0
+var timmunity = 0
 
 var external_force : Vector2
 	
@@ -33,6 +34,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if select_interactable:
 			select_interactable.interact(self)
+	
+	if timmunity > 0:
+		timmunity -= delta
 	
 	if thit > 0:
 		thit -= delta
@@ -83,11 +87,15 @@ func _process(delta: float) -> void:
 func hit(body: Node) -> void:
 	thit = 0.25
 	var dir = (global_position - body.global_position).normalized()
-	$Body.modulate = Color.RED
-	currentHealth -= 1
-	take_damage.emit()
-	health_update.emit()
-	print(currentHealth)
+	
+	if timmunity <= 0:
+		$Body.modulate = Color.RED
+		currentHealth -= 1
+		take_damage.emit()
+		health_update.emit()
+		print(currentHealth)
+		timmunity = 0.5
+	
 	external_force += dir * 500
 	$Body.squash()
 	
