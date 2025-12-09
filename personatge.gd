@@ -6,6 +6,7 @@ signal health_update
 
 var speed : Vector2 = Vector2.ZERO
 @export var stamina : Stamina_Level
+@export var coin_counter : Control
 @export var AmountExp = 1
 
 @export var maxHealth = 10
@@ -111,3 +112,7 @@ func _on_button_pressed() -> void:
 func add_key(id):
 	if id not in keys:
 		keys.append(id)
+
+func coger_moneda():
+	$Body.stretch()
+	coin_counter.sum_points(1)

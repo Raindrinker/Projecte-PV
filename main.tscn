@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=34 format=4 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://personatge.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://uy5a53dnsmth" path="res://enemy.gd" id="2_7mycd"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cpyh8gymdh0j1" path="res://sprites/Sign.png" id="12_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://b2700iinhq1py" path="res://HeartHealthBar.tscn" id="13_vivmo"]
 [ext_resource type="Script" uid="uid://gicvawwf4ghr" path="res://sign.gd" id="13_w48qg"]
+[ext_resource type="Script" uid="uid://cg6yqvrdb014m" path="res://coin_counter.gd" id="14_1u8w0"]
 [ext_resource type="Script" uid="uid://cpou1suvwk4dm" path="res://HP_bar.gd" id="14_w48qg"]
 [ext_resource type="TileSet" uid="uid://bywgwy8d2sptc" path="res://tileset.tres" id="15_yaehf"]
 [ext_resource type="PackedScene" uid="uid://c1yw38rftmf7l" path="res://UI.tscn" id="16_getpj"]
@@ -53,8 +54,9 @@ size = Vector2(127.43475, 131.14493)
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Personatge" parent="." instance=ExtResource("1_1bvp3")]
+[node name="Personatge" parent="." node_paths=PackedStringArray("coin_counter") instance=ExtResource("1_1bvp3")]
 position = Vector2(545, 182)
+coin_counter = NodePath("../CanvasLayer/CoinCounter")
 
 [node name="Enemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("chasee")]
 y_sort_enabled = true
@@ -148,6 +150,13 @@ layout_mode = 0
 offset_right = 564.0
 offset_bottom = 107.0
 theme_override_constants/separation = -21
+
+[node name="CoinCounter" type="Label" parent="CanvasLayer"]
+offset_left = 1006.0
+offset_top = 10.0
+offset_right = 1130.0
+offset_bottom = 102.0
+script = ExtResource("14_1u8w0")
 
 [node name="sign" type="Sprite2D" parent="."]
 position = Vector2(799, 102)
