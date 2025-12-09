@@ -28,3 +28,5 @@ func interact(player):
 		$Area2D.monitorable = false
 	if $Area2D/CollisionShape2D:
 		$Area2D/CollisionShape2D.disabled = true
+		
+	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=34 format=4 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://personatge.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://uy5a53dnsmth" path="res://enemy.gd" id="2_7mycd"]
@@ -19,11 +19,13 @@
 [ext_resource type="TileSet" uid="uid://bywgwy8d2sptc" path="res://tileset.tres" id="15_yaehf"]
 [ext_resource type="PackedScene" uid="uid://c1yw38rftmf7l" path="res://UI.tscn" id="16_getpj"]
 [ext_resource type="Script" uid="uid://cgt8g6rivxvbb" path="res://door.gd" id="16_yaehf"]
-[ext_resource type="Texture2D" uid="uid://1yw15fwh1opb" path="res://sprites/Arrow.png" id="18_cegan"]
-[ext_resource type="Texture2D" uid="uid://di8ws1035nvea" path="res://sprites/Door_side_closed.png" id="18_ryguw"]
+[ext_resource type="Texture2D" uid="uid://cqjvlbxd81nlc" path="res://sprites/Door_side_locked.png" id="18_1u8w0"]
 [ext_resource type="Script" uid="uid://5yey0pw7ucd7" path="res://key.gd" id="19_82xsv"]
+[ext_resource type="Texture2D" uid="uid://bv12plej0ce54" path="res://sprites/Door_side_open.png" id="20_0odxb"]
+[ext_resource type="Texture2D" uid="uid://dhtqmnii733wg" path="res://sprites/Key.png" id="20_d13ii"]
 [ext_resource type="Texture2D" uid="uid://0kafck2o4i15" path="res://sprites/Door_front_closed.png" id="22_d13ii"]
 [ext_resource type="PackedScene" uid="uid://dntyfq35bplyf" path="res://coin.tscn" id="24_1u8w0"]
+[ext_resource type="Script" path="res://coin.gd" id="23_d13ii"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 
@@ -180,11 +182,12 @@ tile_set = ExtResource("15_yaehf")
 [node name="door" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(-90, 144)
-texture = ExtResource("18_ryguw")
+texture = ExtResource("18_1u8w0")
 script = ExtResource("16_yaehf")
 requiresCondition = true
 needs_key = true
 key_id = "blue"
+openText = ExtResource("20_0odxb")
 
 [node name="Area2D" type="Area2D" parent="door"]
 
@@ -200,7 +203,7 @@ shape = SubResource("RectangleShape2D_ryguw")
 
 [node name="Key" type="Sprite2D" parent="."]
 position = Vector2(-1, -7)
-texture = ExtResource("18_cegan")
+texture = ExtResource("20_d13ii")
 script = ExtResource("19_82xsv")
 key_id = "blue"
 
