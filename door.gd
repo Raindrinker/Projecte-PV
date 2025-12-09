@@ -6,6 +6,8 @@ class_name Door
 @export var needs_key: bool = false
 @export var key_id : String = "" #Posar ID de la clau que obre aquesta porta concreta
 
+@export var openText: Texture2D
+
 func interact(player):
 	print (is_open)
 	print(requiresCondition)
@@ -31,4 +33,5 @@ func can_open(player) -> bool:
 func open():
 	is_open = true
 	print("Obrint porta")
+	texture = openText
 	$StaticBody2D.process_mode = Node.PROCESS_MODE_DISABLED
