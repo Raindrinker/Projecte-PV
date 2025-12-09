@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cpyh8gymdh0j1" path="res://sprites/Sign.png" id="12_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://b2700iinhq1py" path="res://HeartHealthBar.tscn" id="13_vivmo"]
 [ext_resource type="Script" uid="uid://gicvawwf4ghr" path="res://sign.gd" id="13_w48qg"]
+[ext_resource type="Script" uid="uid://cg6yqvrdb014m" path="res://coin_counter.gd" id="14_1u8w0"]
 [ext_resource type="Script" uid="uid://cpou1suvwk4dm" path="res://HP_bar.gd" id="14_w48qg"]
 [ext_resource type="TileSet" uid="uid://bywgwy8d2sptc" path="res://tileset.tres" id="15_yaehf"]
 [ext_resource type="PackedScene" uid="uid://c1yw38rftmf7l" path="res://UI.tscn" id="16_getpj"]
@@ -20,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bv12plej0ce54" path="res://sprites/Door_side_open.png" id="20_0odxb"]
 [ext_resource type="Texture2D" uid="uid://dhtqmnii733wg" path="res://sprites/Key.png" id="20_d13ii"]
 [ext_resource type="Texture2D" uid="uid://0kafck2o4i15" path="res://sprites/Door_front_closed.png" id="22_d13ii"]
+[ext_resource type="PackedScene" uid="uid://dntyfq35bplyf" path="res://coin.tscn" id="24_1u8w0"]
 [ext_resource type="Script" path="res://coin.gd" id="23_d13ii"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
@@ -40,14 +42,12 @@ size = Vector2(86, 265)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_getpj"]
 size = Vector2(70, 21)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u8w0"]
-size = Vector2(127.43475, 131.14493)
-
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Personatge" parent="." instance=ExtResource("1_1bvp3")]
+[node name="Personatge" parent="." node_paths=PackedStringArray("coin_counter") instance=ExtResource("1_1bvp3")]
 position = Vector2(545, 182)
+coin_counter = NodePath("../CanvasLayer/CoinCounter")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_cegan")]
 position = Vector2(616, 346)
@@ -131,6 +131,13 @@ offset_right = 564.0
 offset_bottom = 107.0
 theme_override_constants/separation = -21
 
+[node name="CoinCounter" type="Label" parent="CanvasLayer"]
+offset_left = 1006.0
+offset_top = 10.0
+offset_right = 1130.0
+offset_bottom = 102.0
+script = ExtResource("14_1u8w0")
+
 [node name="sign" type="Sprite2D" parent="."]
 position = Vector2(799, 102)
 texture = ExtResource("12_ycdy4")
@@ -192,17 +199,35 @@ z_index = 1
 position = Vector2(503, -217.00002)
 texture = ExtResource("22_d13ii")
 
-[node name="Coin" type="Sprite2D" parent="."]
+[node name="Coin" parent="." instance=ExtResource("24_1u8w0")]
 position = Vector2(281, -50)
-scale = Vector2(0.5390625, 0.5390625)
-texture = ExtResource("5_lquwl")
-script = ExtResource("23_d13ii")
 
-[node name="Area2D" type="Area2D" parent="Coin"]
+[node name="Coin2" parent="." instance=ExtResource("24_1u8w0")]
+position = Vector2(778, 279)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin/Area2D"]
-position = Vector2(0, 1.855072)
-shape = SubResource("RectangleShape2D_1u8w0")
+[node name="Coin3" parent="." instance=ExtResource("24_1u8w0")]
+position = Vector2(380, 367)
+
+[node name="Coin4" parent="." instance=ExtResource("24_1u8w0")]
+position = Vector2(1006, -55)
+
+[node name="Coin5" parent="." instance=ExtResource("24_1u8w0")]
+position = Vector2(1209, 202)
+
+[node name="Coin6" parent="." instance=ExtResource("24_1u8w0")]
+position = Vector2(368.5, 58.5)
+
+[node name="Coin7" parent="." instance=ExtResource("24_1u8w0")]
+position = Vector2(865.5, 387.5)
+
+[node name="Coin8" parent="." instance=ExtResource("24_1u8w0")]
+position = Vector2(467.5, 475.5)
+
+[node name="Coin9" parent="." instance=ExtResource("24_1u8w0")]
+position = Vector2(1093.5, 53.5)
+
+[node name="Coin10" parent="." instance=ExtResource("24_1u8w0")]
+position = Vector2(1296.5, 310.5)
 
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]
 [connection signal="body_entered" from="sign/Area2D" to="sign" method="_on_area_2d_body_entered"]
@@ -211,4 +236,3 @@ shape = SubResource("RectangleShape2D_1u8w0")
 [connection signal="body_exited" from="door/Area2D" to="door" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Key/Area2D" to="Key" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Key/Area2D" to="Key" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="Coin/Area2D" to="Coin" method="_on_area_2d_body_entered"]

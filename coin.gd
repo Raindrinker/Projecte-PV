@@ -8,8 +8,12 @@ func _process(delta: float) -> void:
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	
-	if player_entered == false:
-		print("Hola que tal")
-		self.hide()
-		player_entered = false
+	if body is Personatge:
+		if player_entered == false:
+			print("Hola que tal")
+			self.hide()
+			player_entered = false
+			body.coger_moneda()
+		
+	
 	
