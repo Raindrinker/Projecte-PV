@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=33 format=4 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://personatge.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://uy5a53dnsmth" path="res://enemy.gd" id="2_7mycd"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://di8ws1035nvea" path="res://sprites/Door_side_closed.png" id="18_ryguw"]
 [ext_resource type="Script" uid="uid://5yey0pw7ucd7" path="res://key.gd" id="19_82xsv"]
 [ext_resource type="Texture2D" uid="uid://0kafck2o4i15" path="res://sprites/Door_front_closed.png" id="22_d13ii"]
+[ext_resource type="Script" uid="uid://c23wn04oralup" path="res://coin.gd" id="23_d13ii"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 
@@ -45,6 +46,9 @@ size = Vector2(86, 265)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_getpj"]
 size = Vector2(70, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u8w0"]
+size = Vector2(127.43475, 131.14493)
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -205,6 +209,18 @@ z_index = 1
 position = Vector2(503, -217.00002)
 texture = ExtResource("22_d13ii")
 
+[node name="Coin" type="Sprite2D" parent="."]
+position = Vector2(281, -50)
+scale = Vector2(0.5390625, 0.5390625)
+texture = ExtResource("5_lquwl")
+script = ExtResource("23_d13ii")
+
+[node name="Area2D" type="Area2D" parent="Coin"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin/Area2D"]
+position = Vector2(0, 1.855072)
+shape = SubResource("RectangleShape2D_1u8w0")
+
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]
 [connection signal="body_entered" from="sign/Area2D" to="sign" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="sign/Area2D" to="sign" method="_on_area_2d_body_exited"]
@@ -212,3 +228,4 @@ texture = ExtResource("22_d13ii")
 [connection signal="body_exited" from="door/Area2D" to="door" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Key/Area2D" to="Key" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Key/Area2D" to="Key" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Coin/Area2D" to="Coin" method="_on_area_2d_body_entered"]
