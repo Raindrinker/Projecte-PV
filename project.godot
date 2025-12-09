@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ProjectePV"
-run/main_scene="uid://dmv02jjjv5c63"
+run/main_scene="uid://bw7gastuk8eke"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
