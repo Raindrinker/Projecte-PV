@@ -6,6 +6,31 @@ class_name Door
 @export var needs_key: bool = false
 @export var key_id : String = "" #Posar ID de la clau que obre aquesta porta concreta
 
+@export var openText: Texture2D
+
+var tshake = 0
+var originalPosition: Vector2
+var shake_offset = Vector2.ZERO
+
+func _ready():
+	originalPosition = global_position
+
+func _process(delta: float) -> void:
+	
+	if tshake > 0:
+		shake_offset = Vector2.DOWN.rotated(randf_range(0, 2*PI)) * randf_range(0, 1) * 5
+		tshake -= delta
+	else:
+		shake_offset = Vector2.ZERO
+		global_position = originalPosition
+	
+	
+	global_position = originalPosition + shake_offset
+
+
+func on_cannot_open() -> void:
+	tshake = 0.2
+	
 func interact(player):
 	print (is_open)
 	print(requiresCondition)
@@ -18,6 +43,7 @@ func interact(player):
 		open()
 	else: 
 		print("Porta tancada. Falta conidicons")
+		on_cannot_open()
 
 func can_open(player) -> bool:
 	if requiresCondition == false:
@@ -31,4 +57,6 @@ func can_open(player) -> bool:
 func open():
 	is_open = true
 	print("Obrint porta")
+	texture = openText
 	$StaticBody2D.process_mode = Node.PROCESS_MODE_DISABLED
+	$Area2D.process_mode = Node.PROCESS_MODE_DISABLED
