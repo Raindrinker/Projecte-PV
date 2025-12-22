@@ -53,18 +53,6 @@ coin_counter = NodePath("../CanvasLayer/CoinCounter")
 position = Vector2(616, 346)
 chasee = NodePath("../Personatge")
 
-[node name="Enemy2" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_pm3ni")]
-position = Vector2(534, 344)
-chasee = NodePath("../Personatge")
-
-[node name="Enemy3" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_pm3ni")]
-position = Vector2(685, 296)
-chasee = NodePath("../Personatge")
-
-[node name="Enemy4" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_pm3ni")]
-position = Vector2(456, 300)
-chasee = NodePath("../Personatge")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(221, 250)
 scale = Vector2(1.08, 1)
