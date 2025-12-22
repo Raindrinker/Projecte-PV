@@ -26,6 +26,15 @@ var external_force : Vector2
 var select_interactable
 var keys = []
 
+var current_look_dir = "right"
+
+#variables per atacar
+var can_slash: bool = true
+@export var slash_time: float = 0.2
+@export var sword_return_time: float = 0.5
+@export var weapon_damage: float = 1.0
+
+
 func _ready():
 	currentHealth = maxHealth
 	health_update.emit()
@@ -84,6 +93,20 @@ func _process(delta: float) -> void:
 	if collision != null:
 		if collision.get_collider() is Caixa:
 			collision.get_collider().apply_central_force(-collision.get_normal() * push_force)
+	
+	if current_look_dir == "right" and get_global_mouse_position().x < global_position.x:
+		#animation look_left
+		current_look_dir = "left"
+	elif current_look_dir == "left" and get_global_mouse_position().x > global_position.x:
+		#animation look_right
+		current_look_dir = "right"
+		
+	if get_global_mouse_position().y > global_position.y:
+		$Body/Body/Sword.show_behind_parent = false
+		$Body/Body.frame = 0
+	else:
+		$Body/Body/Sword.show_behind_parent = true
+		$Body/Body.frame = 1
 	
 func hit(body: Node) -> void:
 	thit = 0.25
