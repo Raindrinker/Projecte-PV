@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4wb3ybf8fa4f"]
+
+[ext_resource type="Texture2D" uid="uid://cpyh8gymdh0j1" path="res://sprites/Sign.png" id="1_kd50q"]
+[ext_resource type="Script" uid="uid://gicvawwf4ghr" path="res://scripts/sign.gd" id="2_8yyji"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vivmo"]
+radius = 11.443709
+
+[node name="sign" type="Sprite2D"]
+texture = ExtResource("1_kd50q")
+script = ExtResource("2_8yyji")
+text_sign = "Sabias que el miedo a las palabras largas se llama hipopotomonstrosesquippedaliofobia."
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(-0.88063675, 0.7329722)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5.677722, 85.951416)
+rotation = -1.5870918
+scale = Vector2(6.583811, -5.034087)
+shape = SubResource("CircleShape2D_vivmo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

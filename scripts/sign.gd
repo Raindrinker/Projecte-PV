@@ -1,4 +1,6 @@
 extends Interactable
 
+@export var text_sign : String = ""
+
 func interact(player):
-	UI.show_text("Sabias que el miedo a las palabras largas se llama hipopotomonstrosesquippedaliofobia. ")
+	UI.show_text(text_sign)

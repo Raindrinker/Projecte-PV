@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=22 format=4 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://scenes/personatge.tscn" id="1_jscy8"]
 [ext_resource type="PackedScene" uid="uid://4jqichsfbqgw" path="res://scenes/enemy.tscn" id="2_pm3ni"]
@@ -11,15 +11,12 @@
 [ext_resource type="Script" uid="uid://cpou1suvwk4dm" path="res://scripts/HP_bar.gd" id="9_fv21b"]
 [ext_resource type="PackedScene" uid="uid://b2700iinhq1py" path="res://scenes/HeartHealthBar.tscn" id="10_tel4y"]
 [ext_resource type="Script" uid="uid://cg6yqvrdb014m" path="res://scripts/coin_counter.gd" id="11_qkpxi"]
-[ext_resource type="Texture2D" uid="uid://cpyh8gymdh0j1" path="res://sprites/Sign.png" id="12_5q0nq"]
-[ext_resource type="Script" uid="uid://gicvawwf4ghr" path="res://scripts/sign.gd" id="13_dgi5k"]
+[ext_resource type="PackedScene" uid="uid://b4wb3ybf8fa4f" path="res://scenes/sign.tscn" id="12_0ld40"]
 [ext_resource type="PackedScene" uid="uid://c1yw38rftmf7l" path="res://scenes/UI.tscn" id="14_j8jky"]
 [ext_resource type="TileSet" uid="uid://bywgwy8d2sptc" path="res://tileset.tres" id="15_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://c3h0gd1a66qgj" path="res://scenes/door.tscn" id="16_gqmmt"]
-[ext_resource type="Texture2D" uid="uid://b1nfgwysr75vs" path="res://sprites/Door_front_locked.png" id="17_jscy8"]
+[ext_resource type="PackedScene" uid="uid://db804mlemet80" path="res://scenes/doorhoritzontal.tscn" id="17_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://bs08e5cuem32v" path="res://scenes/key.tscn" id="17_yc10j"]
-[ext_resource type="Texture2D" uid="uid://diu350i2bohu5" path="res://sprites/Door_front_open.png" id="18_pm3ni"]
-[ext_resource type="Texture2D" uid="uid://0kafck2o4i15" path="res://sprites/Door_front_closed.png" id="21_2cjbq"]
 [ext_resource type="PackedScene" uid="uid://dntyfq35bplyf" path="res://scenes/coin.tscn" id="22_chjal"]
 [ext_resource type="PackedScene" uid="uid://c7xjjjd0py33n" path="res://scenes/pause_menu.tscn" id="23_pm3ni"]
 
@@ -28,9 +25,6 @@ size = Vector2(117.5926, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
 size = Vector2(79, 80)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vivmo"]
-radius = 11.443709
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -89,7 +83,7 @@ region_rect = Rect2(0, 0, 2000, 1000)
 
 [node name="Button1" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(949, 292)
+position = Vector2(459, -888)
 texture = ExtResource("8_yq6so")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -116,19 +110,9 @@ offset_right = 1130.0
 offset_bottom = 102.0
 script = ExtResource("11_qkpxi")
 
-[node name="sign" type="Sprite2D" parent="."]
-position = Vector2(799, 102)
-texture = ExtResource("12_5q0nq")
-script = ExtResource("13_dgi5k")
-
-[node name="Area2D" type="Area2D" parent="sign"]
-scale = Vector2(-0.88063675, 0.7329722)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sign/Area2D"]
-position = Vector2(-5.677722, 85.951416)
-rotation = -1.5870918
-scale = Vector2(6.583811, -5.034087)
-shape = SubResource("CircleShape2D_vivmo")
+[node name="sign" parent="." instance=ExtResource("12_0ld40")]
+position = Vector2(841, -1075)
+text_sign = "Tots han d'estar en el mateix estat"
 
 [node name="UI" parent="." instance=ExtResource("14_j8jky")]
 
@@ -138,17 +122,14 @@ scale = Vector2(2.5710034, 1.6240765)
 tile_map_data = PackedByteArray("AAD///v/AAADAAAAAAD+//v/AAADAAAAAAD9//v/AAADAAAAAAD8//v/AAADAAAAAAAAAPv/AAACAAAAABABAPv/AAACAAAAAAACAPv/AAADAAAAAAADAPv/AAADAAAAAAAEAPv/AAADAAAAAAAFAPv/AAAAAAAAAAAFAAMAAAADAAMAAAAFAAIAAAADAAIAAAAFAAEAAAADAAIAAAAFAAAAAAADAAIAAAAFAP//AAADAAIAAAAFAP7/AAADAAIAAAAFAP3/AAADAAIAAAD7/wMAAAAAAAIAAAAEAAMAAAABAAIAAAADAAMAAAABAAIAAAACAAMAAAABAAIAAAABAAMAAAABAAIAAAAAAAMAAAABAAIAAAD//wMAAAABAAIAAAD+/wMAAAABAAIAAAD9/wMAAAABAAIAAAD8/wMAAAABAAIAAAD7/wIAAAABAAAAAAD7/wEAAAABAAAAAAD7/wAAAAABAAAAAAAFAPz/AAADAAIAAAD7//v/AAABAAMAAAD7//z/AAABAAAAAAD7//3/AAABAAEAAAD7////AAACAAIAAAD///r/AAAAAAAAADACAPr/AAAAAAAAACABAPr/AAACAAAAACAAAPr/AAACAAAAADACAPn/AAADAAIAAAACAPj/AAADAAIAAAD///n/AAABAAAAAAD///j/AAABAAAAAAACAPf/AAAAAAAAAAD///f/AAABAAMAAAABAPf/AAACAAAAAAAAAPf/AAACAAAAABAAAPb/AAACAAAAADABAPb/AAACAAAAACACAPb/AAADAAAAACD///b/AAADAAAAACD8//b/AAAAAAAAADAFAPb/AAAAAAAAACD9//b/AAADAAAAACD+//b/AAADAAAAACADAPb/AAADAAAAACAEAPb/AAADAAAAACAFAPX/AAADAAIAAAAFAPT/AAADAAIAAAAFAPP/AAADAAIAAAAFAPL/AAADAAIAAAD8//X/AAABAAAAAAD8//T/AAABAAAAAAD8//P/AAABAAAAAAD8//L/AAABAAAAAAD8//H/AAAAAAAAABAFAPH/AAAAAAAAAAD9//H/AAADAAAAAAD+//H/AAADAAAAAAD///H/AAADAAAAAAAAAPH/AAADAAAAAAABAPH/AAADAAAAAAACAPH/AAADAAAAAAADAPH/AAADAAAAAAAEAPH/AAADAAAAAAA=")
 tile_set = ExtResource("15_kmb1v")
 
-[node name="doorhorizontal" parent="." instance=ExtResource("16_gqmmt")]
-position = Vector2(851, -174)
-texture = ExtResource("17_jscy8")
-requiresCondition = false
-needs_key = false
-openTexture = ExtResource("18_pm3ni")
-lokedTexture = ExtResource("17_jscy8")
-closedTexture = ExtResource("21_2cjbq")
-
 [node name="door" parent="." instance=ExtResource("16_gqmmt")]
 position = Vector2(-90, 144)
+
+[node name="door2" parent="." instance=ExtResource("17_gqmmt")]
+position = Vector2(830, -203)
+requiresCondition = false
+needs_key = false
+key_id = "red"
 
 [node name="KeyBlue" parent="." instance=ExtResource("17_yc10j")]
 position = Vector2(-1, -7)
@@ -192,5 +173,3 @@ position = Vector2(1296.5, 310.5)
 [node name="pause_menu" parent="CanvasLayer2" instance=ExtResource("23_pm3ni")]
 
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]
-[connection signal="body_entered" from="sign/Area2D" to="sign" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="sign/Area2D" to="sign" method="_on_area_2d_body_exited"]
