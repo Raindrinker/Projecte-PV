@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3h0gd1a66qgj"]
+
+[ext_resource type="Texture2D" uid="uid://cqjvlbxd81nlc" path="res://sprites/Door_side_locked.png" id="1_83dcw"]
+[ext_resource type="Script" uid="uid://cgt8g6rivxvbb" path="res://scripts/door.gd" id="2_la1wf"]
+[ext_resource type="Texture2D" uid="uid://bv12plej0ce54" path="res://sprites/Door_side_open.png" id="3_18pbm"]
+[ext_resource type="Texture2D" uid="uid://di8ws1035nvea" path="res://sprites/Door_side_closed.png" id="4_la1wf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cqfq"]
+size = Vector2(178, 197)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryguw"]
+size = Vector2(86, 265)
+
+[node name="door" type="Sprite2D"]
+z_index = 1
+texture = ExtResource("1_83dcw")
+script = ExtResource("2_la1wf")
+requiresCondition = true
+needs_key = true
+key_id = "blue"
+openTexture = ExtResource("3_18pbm")
+lokedTexture = ExtResource("1_83dcw")
+closedTexture = ExtResource("4_la1wf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8, 20.5)
+shape = SubResource("RectangleShape2D_2cqfq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-7, 14.5)
+shape = SubResource("RectangleShape2D_ryguw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

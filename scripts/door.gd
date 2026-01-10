@@ -6,7 +6,9 @@ class_name Door
 @export var needs_key: bool = false
 @export var key_id : String = "" #Posar ID de la clau que obre aquesta porta concreta
 
-@export var openText: Texture2D
+@export var openTexture: Texture2D
+@export var lokedTexture: Texture2D
+@export var closedTexture: Texture2D
 
 var tshake = 0
 var originalPosition: Vector2
@@ -14,6 +16,10 @@ var shake_offset = Vector2.ZERO
 
 func _ready():
 	originalPosition = global_position
+	if !is_open:
+		texture = closedTexture
+	if !is_open and needs_key:
+		texture = lokedTexture
 
 func _process(delta: float) -> void:
 	
@@ -57,6 +63,6 @@ func can_open(player) -> bool:
 func open():
 	is_open = true
 	print("Obrint porta")
-	texture = openText
+	texture = openTexture
 	$StaticBody2D.process_mode = Node.PROCESS_MODE_DISABLED
 	$Area2D.process_mode = Node.PROCESS_MODE_DISABLED
