@@ -1,0 +1,209 @@
+[gd_scene load_steps=12 format=3 uid="uid://bq1q2bru1q222"]
+
+[ext_resource type="Script" uid="uid://ccy0nkh2sx2iy" path="res://scenes/controls_menu.gd" id="1_jfu8g"]
+[ext_resource type="Texture2D" uid="uid://bhpy8oc0hxtd1" path="res://sprites/wasd.png" id="2_5qlyv"]
+[ext_resource type="Texture2D" uid="uid://c7frq6s4sh5f3" path="res://sprites/flechas.png" id="3_jfu8g"]
+[ext_resource type="Texture2D" uid="uid://c6hgypo0tlsve" path="res://sprites/shift.png" id="4_8jatx"]
+[ext_resource type="Texture2D" uid="uid://4nnj74n7vngk" path="res://sprites/ctrl.png" id="5_62f8b"]
+[ext_resource type="Texture2D" uid="uid://bl5xnb8xnyfkm" path="res://sprites/space.png" id="6_2q5co"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06t4h"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfu8g"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.28485027, 0.28485027, 0.28485027, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jatx"]
+bg_color = Color(0.6378432, 0.6378432, 0.63784313, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.28485027, 0.28485027, 0.28485027, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62f8b"]
+bg_color = Color(0.47788018, 0.47788012, 0.47788012, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.28485027, 0.28485027, 0.28485027, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2q5co"]
+
+[node name="controls_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jfu8g")
+
+[node name="fondo" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_06t4h")
+
+[node name="title" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -205.0
+offset_right = 210.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="rule1container" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 355.0
+offset_top = 228.00002
+offset_right = 395.0
+offset_bottom = 268.0
+scale = Vector2(11.272215, 2.4799986)
+
+[node name="rule1" type="Label" parent="rule1container"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.28
+anchor_top = 1.8610001
+anchor_right = -0.28
+anchor_bottom = 1.8610001
+offset_left = 11.90971
+offset_top = -60.730324
+offset_right = 428.90973
+offset_bottom = -37.730324
+scale = Vector2(0.088022925, 0.48387027)
+text = "Presiona                             o                           para moverse"
+
+[node name="wasd" type="Sprite2D" parent="rule1container"]
+position = Vector2(12.419922, 18.145164)
+scale = Vector2(0.08871371, 0.40322605)
+texture = ExtResource("2_5qlyv")
+
+[node name="flecha" type="Sprite2D" parent="rule1container"]
+position = Vector2(23.420422, 17.338715)
+scale = Vector2(0.08871371, 0.40322605)
+texture = ExtResource("3_jfu8g")
+
+[node name="rule2container" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 314.0
+offset_top = 331.00003
+offset_right = 354.0
+offset_bottom = 371.00003
+scale = Vector2(13.84, 2.1999989)
+
+[node name="rule2" type="Label" parent="rule2container"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 2.239884
+offset_top = 14.545457
+offset_right = 505.2399
+offset_bottom = 37.545456
+scale = Vector2(0.06936413, 0.47272694)
+text = "Pressiona o manten pressionado                     para ganar velocidad"
+
+[node name="shift" type="Sprite2D" parent="rule2container"]
+position = Vector2(22.83237, 20.45456)
+scale = Vector2(0.07225434, 0.4545457)
+texture = ExtResource("4_8jatx")
+
+[node name="rule3container" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 394.99997
+offset_top = 426.0
+offset_right = 434.99997
+offset_bottom = 466.0
+scale = Vector2(12.559999, 1.9600024)
+
+[node name="shift2" type="Sprite2D" parent="rule3container"]
+position = Vector2(14.649682, 15.306091)
+scale = Vector2(0.11186673, 0.6734685)
+texture = ExtResource("5_62f8b")
+
+[node name="rule3" type="Label" parent="rule3container"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 0.3980894
+offset_top = 10.204056
+offset_right = 340.3981
+offset_bottom = 33.204056
+scale = Vector2(0.082802474, 0.5918366)
+text = "Pressiona la tecla                       para un sprint"
+
+[node name="rule4container" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 359.0
+offset_top = 495.0
+offset_right = 399.0
+offset_bottom = 535.0
+scale = Vector2(11.08, 2.4000006)
+
+[node name="rule4" type="Label" parent="rule4container"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 3.6101131
+offset_top = 12.5
+offset_right = 375.6101
+offset_bottom = 35.5
+scale = Vector2(0.085496575, 0.44409698)
+text = "Pulsa                                                 para interactuar"
+
+[node name="espai" type="Sprite2D" parent="rule4container"]
+position = Vector2(16.696753, 17.916656)
+scale = Vector2(0.090252705, 0.41666657)
+texture = ExtResource("6_2q5co")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+modulate = Color(0.5505697, 0.7099205, 0.79718816, 1)
+layout_direction = 2
+layout_mode = 0
+offset_left = 463.0
+offset_top = 585.00006
+offset_right = 730.0
+offset_bottom = 627.00006
+scale = Vector2(1.5573803, 1.1168383)
+theme_override_constants/separation = 40
+
+[node name="return" type="Button" parent="BoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.014275181, 0.014275239, 0.0142751895, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jfu8g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8jatx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_62f8b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2q5co")
+text = "  Return  "
+
+[connection signal="pressed" from="BoxContainer/return" to="." method="_on_return_pressed"]
