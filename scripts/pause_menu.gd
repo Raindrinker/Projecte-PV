@@ -14,10 +14,14 @@ func _process(delta: float) -> void:
 func pause():
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
+	get_parent().visible = true
+	self.visible = true
 
 func resume():
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")
+	get_parent().visible = false
+	self.visible = false
 	
 func testEsc():
 	if Input.is_action_just_pressed("pause") and get_tree().paused == false:
@@ -31,7 +35,7 @@ func _on_resume_pressed() -> void:
 	resume()
 
 func _on_controls_pressed() -> void:
-	print("controls")
+	resume()
 	get_tree().change_scene_to_file("res://scenes/controls_menu.tscn")
 
 func _on_restart_pressed() -> void:
