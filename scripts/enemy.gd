@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @export var chasee : Node2D
 @export var totalHealth : float = 3.5
 var health = totalHealth
@@ -25,6 +26,7 @@ func _process(delta: float) -> void:
 func take_damage(weapon_damage: float):
 	$AnimationPlayer.play("take_damage")
 	health -= weapon_damage
+	print("damage")
 	
 	if health <= 0.0:
 		queue_free()
