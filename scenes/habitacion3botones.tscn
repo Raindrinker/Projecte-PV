@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnlrylggjguv3"]
+
+[ext_resource type="PackedScene" uid="uid://8wbuy2vbrjgp" path="res://scenes/button.tscn" id="1_kra6f"]
+[ext_resource type="Script" uid="uid://3orm0kjdr32p" path="res://scripts/habitacion_3_botones.gd" id="1_pyb1a"]
+[ext_resource type="PackedScene" uid="uid://db804mlemet80" path="res://scenes/doorhoritzontal.tscn" id="3_2oc0g"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_pyb1a")
+
+[node name="Button1" parent="." instance=ExtResource("1_kra6f")]
+boton = "button1"
+
+[node name="Button2" parent="." instance=ExtResource("1_kra6f")]
+position = Vector2(395, -1)
+boton = "button2"
+
+[node name="Button3" parent="." instance=ExtResource("1_kra6f")]
+position = Vector2(851, 0)
+boton = "button3"
+
+[node name="door" parent="." instance=ExtResource("3_2oc0g")]
+position = Vector2(396, -364)
+scale = Vector2(1.1800721, 1)
+needs_key = false

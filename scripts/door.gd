@@ -18,7 +18,7 @@ func _ready():
 	originalPosition = global_position
 	if !is_open:
 		texture = closedTexture
-	if !is_open and needs_key:
+	if !is_open and requiresCondition:
 		texture = lokedTexture
 
 func _process(delta: float) -> void:
@@ -52,8 +52,8 @@ func interact(player):
 		on_cannot_open()
 
 func can_open(player) -> bool:
-	if requiresCondition == false:
-		return true
+	if requiresCondition == true:
+		return false
 	if needs_key and key_id in player.keys:
 		return true
 	if needs_key == true:
