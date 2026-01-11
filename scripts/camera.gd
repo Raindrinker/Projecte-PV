@@ -2,56 +2,87 @@ extends Camera2D
 
 @export var player: Node2D
 
-# --- SALA 1 ---
-@export var sala1_left: int = 0
-@export var sala1_right: int = 2000
+# -------------------------------
+# Limites de cada sala (en píxeles)
+# -------------------------------
+# Sala 1
+@export var sala1_left: int = -130
+@export var sala1_right: int = 1675
+@export var sala1_top: int = -325
+@export var sala1_bottom: int = 730
 
-# --- SALA 2 ---
-@export var sala2_left: int = 2000
-@export var sala2_right: int = 4096
+# Sala 2
+@export var sala2_left: int = 525
+@export var sala2_right: int = 1180
+@export var sala2_top: int = -640
+@export var sala2_bottom: int = -190
 
-# Límites verticales (comunes)
-@export var limit_top_manual: int = 0
-@export var limit_bottom_manual: int = 2048
+# Sala 2
+@export var sala3_left: int = 35
+@export var sala3_right: int = 1675
+@export var sala3_top: int = -1235
+@export var sala3_bottom: int = -615
 
+# -------------------------------
+# Shake
+# -------------------------------
 var tshake := 0.0
 var shake_offset := Vector2.ZERO
 
 func _ready() -> void:
 	enabled = true
-	set_sala_1()
+	set_sala1_limits() # Arrancamos en sala 1
 
 func _process(delta: float) -> void:
 	update_sala_by_player()
 
+	# Shake
 	if tshake > 0.0:
 		shake_offset = Vector2.DOWN.rotated(randf_range(0.0, TAU)) * randf_range(0.0, 1.0) * 5.0
 		tshake -= delta
 	else:
 		shake_offset = Vector2.ZERO
 
+	# Seguimiento suave del jugador
 	global_position = lerp(global_position, player.global_position, 0.1) + shake_offset
 
-# ------------------------------------------------
-
+# -------------------------------
+# Cambio de límites según la sala
+# -------------------------------
 func update_sala_by_player() -> void:
-	# Cambia esto según dónde esté el corte entre salas
-	if player.global_position.x < sala2_left:
-		set_sala_1()
-	else:
-		set_sala_2()
+	# Sala 1
+	if player.global_position.x >= sala1_left and player.global_position.x <= sala1_right \
+	and player.global_position.y >= sala1_top and player.global_position.y <= sala1_bottom:
+		set_sala1_limits()
+	# Sala 2
+	elif player.global_position.x >= sala2_left and player.global_position.x <= sala2_right \
+	and player.global_position.y >= sala2_top and player.global_position.y <= sala2_bottom:
+		set_sala2_limits()
+	# Sala 3
+	elif player.global_position.x >= sala3_left and player.global_position.x <= sala3_right \
+	and player.global_position.y >= sala3_top and player.global_position.y <= sala3_bottom:
+		set_sala3_limits()
 
-func set_sala_1() -> void:
+func set_sala1_limits() -> void:
 	limit_left = sala1_left
 	limit_right = sala1_right
-	limit_top = limit_top_manual
-	limit_bottom = limit_bottom_manual
+	limit_top = sala1_top
+	limit_bottom = sala1_bottom
 
-func set_sala_2() -> void:
+func set_sala2_limits() -> void:
 	limit_left = sala2_left
 	limit_right = sala2_right
-	limit_top = limit_top_manual
-	limit_bottom = limit_bottom_manual
+	limit_top = sala2_top
+	limit_bottom = sala2_bottom
+	
+func set_sala3_limits() -> void:
+	limit_left = sala3_left
+	limit_right = sala3_right
+	limit_top = sala3_top
+	limit_bottom = sala3_bottom
 
+# -------------------------------
+# Shake cuando el personaje recibe daño
+# -------------------------------
 func _on_personatge_take_damage() -> void:
 	tshake = 0.2
