@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=23 format=4 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://scenes/personatge.tscn" id="1_jscy8"]
 [ext_resource type="PackedScene" uid="uid://4jqichsfbqgw" path="res://scenes/enemy.tscn" id="2_pm3ni"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c3h0gd1a66qgj" path="res://scenes/door.tscn" id="16_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://db804mlemet80" path="res://scenes/doorhoritzontal.tscn" id="17_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://bs08e5cuem32v" path="res://scenes/key.tscn" id="17_yc10j"]
+[ext_resource type="PackedScene" uid="uid://ch3gwfsn8arka" path="res://scenes/tutorial_ui.tscn" id="20_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://dntyfq35bplyf" path="res://scenes/coin.tscn" id="22_chjal"]
 [ext_resource type="PackedScene" uid="uid://c7xjjjd0py33n" path="res://scenes/pause_menu.tscn" id="23_pm3ni"]
 
@@ -109,7 +110,7 @@ offset_bottom = 102.0
 script = ExtResource("11_qkpxi")
 
 [node name="sign" parent="." instance=ExtResource("12_0ld40")]
-position = Vector2(841, -1075)
+position = Vector2(580, -1122)
 text_sign = "Tots han d'estar en el mateix estat"
 
 [node name="UI" parent="." instance=ExtResource("14_j8jky")]
@@ -126,6 +127,7 @@ position = Vector2(-90, 144)
 [node name="door2" parent="." instance=ExtResource("17_gqmmt")]
 position = Vector2(853, -238)
 scale = Vector2(1.1200024, 1)
+show_hint = true
 requiresCondition = false
 needs_key = false
 key_id = "red"
@@ -169,7 +171,10 @@ position = Vector2(1296.5, 310.5)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 
 [node name="pause_menu" parent="CanvasLayer2" instance=ExtResource("23_pm3ni")]
+
+[node name="TutorialUI" parent="." instance=ExtResource("20_gqmmt")]
 
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]

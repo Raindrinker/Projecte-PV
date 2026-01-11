@@ -10,6 +10,8 @@ offset_left = 81.0
 offset_top = 449.0
 offset_right = 1034.0
 offset_bottom = 625.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0

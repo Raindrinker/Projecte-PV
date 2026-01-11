@@ -7,6 +7,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Personatge:
 		body.select_interactable = self
 		modulate = Color.YELLOW
+		if tutorialManager.tutorial_active:
+			tutorialUI.show_text("Prem E per interactuar")
 			
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Personatge:

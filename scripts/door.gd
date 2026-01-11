@@ -1,6 +1,7 @@
 extends Interactable
 class_name Door
 
+@export var show_hint :bool = false
 @export var is_open :bool = false
 @export var requiresCondition: bool = false
 @export var needs_key: bool = false
@@ -9,6 +10,8 @@ class_name Door
 @export var openTexture: Texture2D
 @export var lokedTexture: Texture2D
 @export var closedTexture: Texture2D
+
+var shown_interact_hint = false
 
 var tshake = 0
 var originalPosition: Vector2
@@ -38,6 +41,9 @@ func on_cannot_open() -> void:
 	tshake = 0.2
 	
 func interact(player):
+	if !shown_interact_hint and show_hint:
+		tutorialUI.show_text("Prem E per interactuar")
+		shown_interact_hint = true
 	print (is_open)
 	print(requiresCondition)
 	print(needs_key)

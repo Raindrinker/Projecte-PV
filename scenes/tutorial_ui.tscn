@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch3gwfsn8arka"]
+
+[ext_resource type="Script" uid="uid://cmuf4xorp54qv" path="res://scripts/tutorial_ui.gd" id="1_oi6as"]
+
+[node name="TutorialUI" type="CanvasLayer"]
+script = ExtResource("1_oi6as")
+
+[node name="TEXT" type="Label" parent="."]
+modulate = Color(0.00011382803, 0.00011382803, 0.00011382803, 1)
+offset_left = 526.0
+offset_top = 267.0
+offset_right = 566.0
+offset_bottom = 290.0
+scale = Vector2(1.6923362, 1.9707141)
+size_flags_horizontal = 4
+text = "Prem e per interactuar"
