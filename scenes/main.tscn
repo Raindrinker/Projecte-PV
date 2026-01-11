@@ -54,6 +54,12 @@ texture = ExtResource("3_y6deb")
 position = Vector2(800, 283)
 script = ExtResource("4_og1vs")
 player = NodePath("../Personatge")
+sala1_left = -140
+sala1_right = 1675
+sala2_left = 40
+sala2_right = 1675
+limit_top_manual = -2000
+limit_bottom_manual = 730
 
 [node name="Caixa" type="RigidBody2D" parent="."]
 position = Vector2(852, 140)
