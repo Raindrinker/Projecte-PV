@@ -34,6 +34,8 @@ var can_slash: bool = true
 @export var sword_return_time: float = 0.5
 @export var weapon_damage: float = 1.0
 
+@onready var sword = $Body/Body/Sword
+
 
 func _ready():
 	currentHealth = maxHealth
@@ -102,11 +104,12 @@ func _process(delta: float) -> void:
 		current_look_dir = "right"
 		
 	if get_global_mouse_position().y > global_position.y:
-		$Body/Body/Sword.show_behind_parent = false
-		$Body/Body.frame = 0
+		$Body/Body/Sword.z_index = 1
 	else:
-		$Body/Body/Sword.show_behind_parent = true
-		$Body/Body.frame = 1
+		$Body/Body/Sword.z_index = -1
+	
+	if Input.is_action_just_pressed("attack"):
+		sword.slash()
 	
 func hit(body: Node) -> void:
 	thit = 0.25
