@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bq1q2bru1q222"]
+[gd_scene load_steps=13 format=3 uid="uid://bq1q2bru1q222"]
 
 [ext_resource type="Script" uid="uid://ccy0nkh2sx2iy" path="res://scripts/controls_menu.gd" id="1_jfu8g"]
 [ext_resource type="Texture2D" uid="uid://bhpy8oc0hxtd1" path="res://sprites/wasd.png" id="2_5qlyv"]
 [ext_resource type="Texture2D" uid="uid://c7frq6s4sh5f3" path="res://sprites/flechas.png" id="3_jfu8g"]
 [ext_resource type="Texture2D" uid="uid://c6hgypo0tlsve" path="res://sprites/shift.png" id="4_8jatx"]
+[ext_resource type="Texture2D" uid="uid://dm33elbs4clcw" path="res://sprites/TeclaM.png" id="4_62f8b"]
 [ext_resource type="Texture2D" uid="uid://4nnj74n7vngk" path="res://sprites/ctrl.png" id="5_62f8b"]
 [ext_resource type="Texture2D" uid="uid://itv2j2xacjla" path="res://sprites/e.png" id="6_jfu8g"]
 
@@ -68,10 +69,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -205.0
-offset_top = -205.0
-offset_right = 210.0
-offset_bottom = -122.0
+offset_left = -209.0
+offset_top = -271.0
+offset_right = 206.0
+offset_bottom = -188.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
@@ -80,10 +81,10 @@ horizontal_alignment = 1
 
 [node name="rule1container" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 355.0
-offset_top = 228.00002
-offset_right = 395.0
-offset_bottom = 268.0
+offset_left = 345.0
+offset_top = 165.00002
+offset_right = 385.0
+offset_bottom = 205.0
 scale = Vector2(11.272215, 2.4799986)
 
 [node name="rule1" type="Label" parent="rule1container"]
@@ -111,12 +112,40 @@ position = Vector2(23.420422, 17.338715)
 scale = Vector2(0.08871371, 0.40322605)
 texture = ExtResource("3_jfu8g")
 
+[node name="rule5container" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 405.00003
+offset_top = 486.0
+offset_right = 445.00003
+offset_bottom = 526.0
+scale = Vector2(11.272215, 2.4799986)
+
+[node name="rule1" type="Label" parent="rule5container"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.28
+anchor_top = 1.8610001
+anchor_right = -0.28
+anchor_bottom = 1.8610001
+offset_left = 11.90971
+offset_top = -60.730324
+offset_right = 428.90973
+offset_bottom = -37.730324
+scale = Vector2(0.088022925, 0.48387027)
+text = "Presiona                     para defenderte"
+
+[node name="flecha" type="Sprite2D" parent="rule5container"]
+position = Vector2(11.0005, 20.564537)
+scale = Vector2(0.006324316, 0.028745601)
+texture = ExtResource("4_62f8b")
+
 [node name="rule2container" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 314.0
-offset_top = 331.00003
-offset_right = 354.0
-offset_bottom = 371.00003
+offset_left = 287.00003
+offset_top = 271.0
+offset_right = 327.00003
+offset_bottom = 311.0
 scale = Vector2(13.84, 2.1999989)
 
 [node name="rule2" type="Label" parent="rule2container"]
@@ -136,10 +165,10 @@ texture = ExtResource("4_8jatx")
 
 [node name="rule3container" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 394.99997
-offset_top = 426.0
-offset_right = 434.99997
-offset_bottom = 466.0
+offset_left = 369.0
+offset_top = 357.0
+offset_right = 409.0
+offset_bottom = 397.0
 scale = Vector2(12.559999, 1.9600024)
 
 [node name="shift2" type="Sprite2D" parent="rule3container"]
@@ -159,10 +188,10 @@ text = "Pressiona la tecla                       para un sprint"
 
 [node name="rule4container" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 405.00003
-offset_top = 499.0
-offset_right = 445.00003
-offset_bottom = 539.0
+offset_left = 354.00003
+offset_top = 429.99997
+offset_right = 394.00003
+offset_bottom = 469.99997
 scale = Vector2(11.08, 2.4000006)
 
 [node name="rule4" type="Label" parent="rule4container"]
