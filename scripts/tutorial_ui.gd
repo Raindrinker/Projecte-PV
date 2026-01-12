@@ -9,11 +9,12 @@ var duration: float = 2.0  # segons
 func _ready():
 	text_label.visible = false
 	
-func show_text(msg: String):
+func show_text(msg: String, time:float = 2.0):
 	text_label.text = msg
 	text_label.visible = true
 	auto_hide = true
 	show_time = 0.0
+	duration = time
 
 func hide_text():
 	text_label.visible = false
