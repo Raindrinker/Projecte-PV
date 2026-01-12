@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=36 format=4 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://scenes/personatge.tscn" id="1_jscy8"]
 [ext_resource type="PackedScene" uid="uid://4jqichsfbqgw" path="res://scenes/enemy.tscn" id="2_pm3ni"]
@@ -35,6 +35,11 @@ size = Vector2(117.5926, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
 size = Vector2(79, 80)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yq6so"]
+font_size = 36
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jscy8"]
 size = Vector2(65.5, 75.5)
@@ -122,10 +127,11 @@ offset_bottom = 107.0
 theme_override_constants/separation = -21
 
 [node name="CoinCounter" type="Label" parent="CanvasLayer"]
-offset_left = 1006.0
-offset_top = 10.0
-offset_right = 1130.0
-offset_bottom = 102.0
+offset_left = 981.0
+offset_top = 6.0
+offset_right = 1181.0
+offset_bottom = 159.0
+label_settings = SubResource("LabelSettings_yq6so")
 script = ExtResource("11_qkpxi")
 
 [node name="sign" parent="." instance=ExtResource("12_0ld40")]
