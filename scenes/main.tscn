@@ -47,7 +47,7 @@ y_sort_enabled = true
 
 [node name="Personatge" parent="." node_paths=PackedStringArray("coin_counter") instance=ExtResource("1_jscy8")]
 position = Vector2(835, 12)
-collision_mask = 3
+collision_mask = 7
 coin_counter = NodePath("../CanvasLayer/CoinCounter")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_pm3ni")]

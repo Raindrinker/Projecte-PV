@@ -12,6 +12,21 @@
 [ext_resource type="Texture2D" uid="uid://b8j5r6ti3g1a1" path="res://sprites/Character_walk2.png" id="6_w2c2c"]
 [ext_resource type="Script" uid="uid://di285ny18tdtm" path="res://scripts/sprint.gd" id="7_w2c2c"]
 
+[sub_resource type="Animation" id="Animation_0jka0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.012710722]
+}
+
 [sub_resource type="Animation" id="Animation_f3b50"]
 resource_name = "slash"
 length = 0.3
@@ -29,21 +44,6 @@ tracks/0/keys = {
 "values": [-1.0471976, 1.0471976]
 }
 
-[sub_resource type="Animation" id="Animation_0jka0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.012710722]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0jka0"]
 _data = {
 &"RESET": SubResource("Animation_0jka0"),
@@ -52,6 +52,21 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jka0"]
 size = Vector2(74, 31)
+
+[sub_resource type="Animation" id="Animation_5pwcr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword/SpriteSowrd:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0.694)]
+}
 
 [sub_resource type="Animation" id="Animation_ynqhl"]
 resource_name = "look_left"
@@ -68,21 +83,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
 "values": [Vector2(1, 0.694), Vector2(-1, -0.694)]
-}
-
-[sub_resource type="Animation" id="Animation_5pwcr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sword/SpriteSowrd:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 0.694)]
 }
 
 [sub_resource type="Animation" id="Animation_qu462"]
@@ -234,6 +234,7 @@ texture = ExtResource("4_pjltf")
 offset = Vector2(36.23059, -4.229599)
 
 [node name="Area2D" type="Area2D" parent="Body/Body/Sword"]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Body/Sword/Area2D"]
 position = Vector2(61, 22.5)
