@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=34 format=4 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://scenes/personatge.tscn" id="1_jscy8"]
 [ext_resource type="PackedScene" uid="uid://4jqichsfbqgw" path="res://scenes/enemy.tscn" id="2_pm3ni"]
@@ -26,6 +26,8 @@
 [ext_resource type="Script" uid="uid://dj5q2nn63qlke" path="res://scenes/trap.gd" id="24_og1vs"]
 [ext_resource type="PackedScene" uid="uid://dhpvlql0ni5en" path="res://scenes/Arrow.tscn" id="25_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://dcq0hxaelju2g" path="res://sprites/Button2.png" id="25_yq6so"]
+[ext_resource type="PackedScene" uid="uid://c3ah8diifl88t" path="res://scenes/enemy_spawner.tscn" id="27_2f3dj"]
+[ext_resource type="Script" uid="uid://cdfcumxoxw1jg" path="res://scripts/enemy_spawner.gd" id="28_yq6so"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(117.5926, 128)
@@ -247,5 +249,11 @@ shape = SubResource("RectangleShape2D_vxglm")
 
 [node name="ArrowSpawn" type="Marker2D" parent="ArrowTrapRight"]
 position = Vector2(912, 54)
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("27_2f3dj")]
+position = Vector2(1095, 433)
+script = ExtResource("28_yq6so")
+enemy_scene = ExtResource("2_pm3ni")
+player = NodePath("../Personatge")
 
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]
