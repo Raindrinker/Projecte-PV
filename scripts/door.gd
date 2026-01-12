@@ -58,11 +58,11 @@ func interact(player):
 		on_cannot_open()
 
 func can_open(player) -> bool:
-	if requiresCondition == true:
-		return false
 	if needs_key and key_id in player.keys:
 		return true
 	if needs_key == true:
+		return false
+	if requiresCondition == true:
 		return false
 	return true
 	

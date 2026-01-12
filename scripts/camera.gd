@@ -17,11 +17,23 @@ extends Camera2D
 @export var sala2_top: int = -640
 @export var sala2_bottom: int = -190
 
-# Sala 2
+# Sala 3
 @export var sala3_left: int = 35
 @export var sala3_right: int = 1675
 @export var sala3_top: int = -1235
 @export var sala3_bottom: int = -615
+
+# Sala 4
+@export var sala4_left: int = -463
+@export var sala4_right: int = 2170
+@export var sala4_top: int = -2379
+@export var sala4_bottom: int = 1235
+
+# Sala 5 la del costat de Sala1
+@export var sala5_left: int = -1450
+@export var sala5_right: int = -130
+@export var sala5_top: int = -196
+@export var sala5_bottom: int = 730
 
 # -------------------------------
 # Shake
@@ -62,6 +74,14 @@ func update_sala_by_player() -> void:
 	elif player.global_position.x >= sala3_left and player.global_position.x <= sala3_right \
 	and player.global_position.y >= sala3_top and player.global_position.y <= sala3_bottom:
 		set_sala3_limits()
+	# Sala 4
+	elif player.global_position.x >= sala4_left and player.global_position.x <= sala4_right \
+	and player.global_position.y >= sala4_top and player.global_position.y <= sala4_bottom:
+		set_sala4_limits()
+	# Sala 4
+	elif player.global_position.x >= sala5_left and player.global_position.x <= sala5_right \
+	and player.global_position.y >= sala5_top and player.global_position.y <= sala5_bottom:
+		set_sala5_limits()
 
 func set_sala1_limits() -> void:
 	limit_left = sala1_left
@@ -80,6 +100,18 @@ func set_sala3_limits() -> void:
 	limit_right = sala3_right
 	limit_top = sala3_top
 	limit_bottom = sala3_bottom
+	
+func set_sala4_limits() -> void:
+	limit_left = sala4_left
+	limit_right = sala4_right
+	limit_top = sala4_top
+	limit_bottom = sala4_bottom
+
+func set_sala5_limits() -> void:
+	limit_left = sala5_left
+	limit_right = sala5_right
+	limit_top = sala5_top
+	limit_bottom = sala5_bottom
 
 # -------------------------------
 # Shake cuando el personaje recibe daño
