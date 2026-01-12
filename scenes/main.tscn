@@ -201,47 +201,51 @@ sprite_pressed = ExtResource("25_yq6so")
 traps = [NodePath("../ArrowTrapLeft"), NodePath("../ArrowTrapRight")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PressurePlate"]
-position = Vector2(851, 424)
+position = Vector2(786, 442)
 shape = SubResource("RectangleShape2D_jscy8")
 
 [node name="Sprite2D" type="Sprite2D" parent="PressurePlate"]
-position = Vector2(852, 422)
+position = Vector2(787, 441)
 texture = ExtResource("24_2f3dj")
 
-[node name="ArrowTrapLeft" type="StaticBody2D" parent="."]
+[node name="ArrowTrapLeft" type="StaticBody2D" parent="." node_paths=PackedStringArray("spawn_point")]
+position = Vector2(-718, -13)
 collision_mask = 2
 script = ExtResource("24_og1vs")
 arrow_scene = ExtResource("25_2wyq8")
-arrow_speed = 3.0
+arrow_speed = 1500.0
+spawn_point = NodePath("ArrowSpawn")
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowTrapLeft"]
-position = Vector2(-15, 437)
+position = Vector2(710, 434)
 texture = ExtResource("21_og1vs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowTrapLeft"]
-position = Vector2(-19, 463.5)
+position = Vector2(710, 466)
 shape = SubResource("RectangleShape2D_2wyq8")
 
 [node name="ArrowSpawn" type="Marker2D" parent="ArrowTrapLeft"]
-position = Vector2(21, 425)
+position = Vector2(741, 431)
 
-[node name="ArrowTrapRight" type="StaticBody2D" parent="."]
-position = Vector2(9, 427)
+[node name="ArrowTrapRight" type="StaticBody2D" parent="." node_paths=PackedStringArray("spawn_point")]
+position = Vector2(603, 376)
 collision_mask = 2
 script = ExtResource("24_og1vs")
 arrow_scene = ExtResource("25_2wyq8")
-sprite_direction = "left"
-arrow_speed = 3.0
+arrow_speed = 1500.0
+shoot_direction = Vector2(-1, 0)
+spawn_point = NodePath("ArrowSpawn")
+sprite_flip_h = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowTrapRight"]
-position = Vector2(1546, -47)
+position = Vector2(943, 55)
 texture = ExtResource("21_og1vs")
 
-[node name="ArrowSpawn" type="Marker2D" parent="ArrowTrapRight"]
-position = Vector2(1513, -53)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowTrapRight"]
-position = Vector2(1544, -17)
+position = Vector2(943, 86)
 shape = SubResource("RectangleShape2D_vxglm")
+
+[node name="ArrowSpawn" type="Marker2D" parent="ArrowTrapRight"]
+position = Vector2(912, 54)
 
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]

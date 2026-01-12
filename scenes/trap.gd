@@ -1,49 +1,48 @@
+# trampa.gd
 extends Node2D
 
 @export var arrow_scene: PackedScene
-
-# Dirección en la que dispara la trampa
+@export var arrow_speed: float = 300.0
 @export var shoot_direction: Vector2 = Vector2.RIGHT
 
-# Dirección visual del sprite (cómo mira la trampa)
-@export var sprite_direction: String = "right"
+# PUNTO DE SPAWN MANUAL - arrastra un nodo desde la escena principal
+@export var spawn_point: Node2D
 
-@export var arrow_speed: float = 300.0
+# CONTROL DE SPRITE
+@export var sprite_flip_h: bool = false  # True para mirar izquierda
+@export var sprite_flip_v: bool = false  # True para voltear verticalmente
+@export var sprite_rotation: float = 0.0  # Rotación en grados
 
-@onready var spawn_point = $ArrowSpawn
 @onready var sprite = $Sprite2D
 
-
 func _ready():
-	_apply_sprite_direction()
-
+	# Aplicar configuración del sprite
+	_apply_sprite_settings()
 
 func shoot():
-	print("ARROW SCENE PATH:", arrow_scene.resource_path)
-	
 	var arrow = arrow_scene.instantiate()
-	print("SCRIPT DE LA FLECHA:", arrow.get_script())
-	arrow.global_position = spawn_point.global_position
+	
+	# Usar posición del nodo que tú elijas
+	if spawn_point:
+		arrow.global_position = spawn_point.global_position
+	else:
+		arrow.global_position = global_position
+	
 	arrow.direction = shoot_direction.normalized()
 	arrow.speed = arrow_speed
+	
+	get_tree().root.add_child(arrow)
+	
+	# Marcador visual del spawn
+	var marcador = Sprite2D.new()
+	marcador.global_position = arrow.global_position
+	marcador.scale = Vector2(0.5, 0.5)
+	get_tree().root.add_child(marcador)
+	await get_tree().create_timer(0.5).timeout
+	marcador.queue_free()
 
-	get_parent().add_child(arrow)
-
-
-func _apply_sprite_direction():
-	match sprite_direction:
-		"right":
-			sprite.flip_h = false
-			rotation_degrees = 0
-
-		"left":
-			sprite.flip_h = true
-			rotation_degrees = 0
-
-		"up":
-			sprite.flip_h = false
-			rotation_degrees = -90
-
-		"down":
-			sprite.flip_h = false
-			rotation_degrees = 90
+func _apply_sprite_settings():
+	if sprite:
+		sprite.flip_h = sprite_flip_h
+		sprite.flip_v = sprite_flip_v
+		sprite.rotation_degrees = sprite_rotation

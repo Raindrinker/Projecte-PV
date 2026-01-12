@@ -1,12 +1,19 @@
 extends Area2D
 
-@export var direction: Vector2
-@export var speed: float = 300.0
+var direction = Vector2.RIGHT
+var speed = 300.0
 
-func _process(delta):
+func _ready():
+	$Sprite2D.z_index = 10
+	$Sprite2D.visible = true
+	$Sprite2D.top_level = false
+	$Sprite2D.position = Vector2.ZERO
+	$Sprite2D.rotation = direction.angle()
+
+	print("💥 FLECHA creada en:", global_position)
+
+func _physics_process(delta):
 	position += direction * speed * delta
 
 func _on_body_entered(body):
-	if body.has_method("hit"):
-		body.hit(self)
 	queue_free()
