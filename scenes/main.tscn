@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=32 format=4 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://scenes/personatge.tscn" id="1_jscy8"]
 [ext_resource type="PackedScene" uid="uid://4jqichsfbqgw" path="res://scenes/enemy.tscn" id="2_pm3ni"]
@@ -18,8 +18,14 @@
 [ext_resource type="PackedScene" uid="uid://db804mlemet80" path="res://scenes/doorhoritzontal.tscn" id="17_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://bs08e5cuem32v" path="res://scenes/key.tscn" id="17_yc10j"]
 [ext_resource type="PackedScene" uid="uid://ch3gwfsn8arka" path="res://scenes/tutorial_ui.tscn" id="20_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://bty2a5s1roxbw" path="res://sprites/ArrowTrapSide.png" id="21_og1vs"]
+[ext_resource type="Script" uid="uid://dm31e07btpdbm" path="res://scenes/pressure_plate.gd" id="21_yc10j"]
 [ext_resource type="PackedScene" uid="uid://dntyfq35bplyf" path="res://scenes/coin.tscn" id="22_chjal"]
 [ext_resource type="PackedScene" uid="uid://c7xjjjd0py33n" path="res://scenes/pause_menu.tscn" id="23_pm3ni"]
+[ext_resource type="Texture2D" uid="uid://b4wygavfh26fr" path="res://sprites/Button1.png" id="24_2f3dj"]
+[ext_resource type="Script" uid="uid://dj5q2nn63qlke" path="res://scenes/trap.gd" id="24_og1vs"]
+[ext_resource type="PackedScene" uid="uid://dhpvlql0ni5en" path="res://scenes/Arrow.tscn" id="25_2wyq8"]
+[ext_resource type="Texture2D" uid="uid://dcq0hxaelju2g" path="res://sprites/Button2.png" id="25_yq6so"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(117.5926, 128)
@@ -27,11 +33,21 @@ size = Vector2(117.5926, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
 size = Vector2(79, 80)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jscy8"]
+size = Vector2(65.5, 75.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wyq8"]
+size = Vector2(62, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxglm"]
+size = Vector2(69, 32)
+
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Personatge" parent="." node_paths=PackedStringArray("coin_counter") instance=ExtResource("1_jscy8")]
 position = Vector2(835, 12)
+collision_mask = 3
 coin_counter = NodePath("../CanvasLayer/CoinCounter")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("chasee") instance=ExtResource("2_pm3ni")]
@@ -158,7 +174,7 @@ position = Vector2(1209, 202)
 position = Vector2(368.5, 58.5)
 
 [node name="Coin7" parent="." instance=ExtResource("22_chjal")]
-position = Vector2(865.5, 387.5)
+position = Vector2(1086, 296)
 
 [node name="Coin8" parent="." instance=ExtResource("22_chjal")]
 position = Vector2(467.5, 475.5)
@@ -176,5 +192,55 @@ visible = false
 [node name="pause_menu" parent="CanvasLayer2" instance=ExtResource("23_pm3ni")]
 
 [node name="TutorialUI" parent="." instance=ExtResource("20_gqmmt")]
+
+[node name="PressurePlate" type="Area2D" parent="." node_paths=PackedStringArray("traps")]
+script = ExtResource("21_yc10j")
+sprite_normal = ExtResource("24_2f3dj")
+sprite_pressed = ExtResource("25_yq6so")
+traps = [NodePath("../ArrowTrapLeft"), NodePath("../ArrowTrapRight")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PressurePlate"]
+position = Vector2(851, 424)
+shape = SubResource("RectangleShape2D_jscy8")
+
+[node name="Sprite2D" type="Sprite2D" parent="PressurePlate"]
+position = Vector2(852, 422)
+texture = ExtResource("24_2f3dj")
+
+[node name="ArrowTrapLeft" type="StaticBody2D" parent="."]
+collision_mask = 2
+script = ExtResource("24_og1vs")
+arrow_scene = ExtResource("25_2wyq8")
+arrow_speed = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ArrowTrapLeft"]
+position = Vector2(-15, 437)
+texture = ExtResource("21_og1vs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowTrapLeft"]
+position = Vector2(-19, 463.5)
+shape = SubResource("RectangleShape2D_2wyq8")
+
+[node name="ArrowSpawn" type="Marker2D" parent="ArrowTrapLeft"]
+position = Vector2(21, 425)
+
+[node name="ArrowTrapRight" type="StaticBody2D" parent="."]
+position = Vector2(9, 427)
+collision_mask = 2
+script = ExtResource("24_og1vs")
+arrow_scene = ExtResource("25_2wyq8")
+sprite_direction = "left"
+arrow_speed = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ArrowTrapRight"]
+position = Vector2(1546, -47)
+texture = ExtResource("21_og1vs")
+
+[node name="ArrowSpawn" type="Marker2D" parent="ArrowTrapRight"]
+position = Vector2(1513, -53)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowTrapRight"]
+position = Vector2(1544, -17)
+shape = SubResource("RectangleShape2D_vxglm")
 
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]
