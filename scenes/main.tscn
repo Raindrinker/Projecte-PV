@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://dmv02jjjv5c63"]
+[gd_scene load_steps=37 format=4 uid="uid://dmv02jjjv5c63"]
 
 [ext_resource type="PackedScene" uid="uid://bpqxt1wpujfsh" path="res://scenes/personatge.tscn" id="1_jscy8"]
 [ext_resource type="PackedScene" uid="uid://4jqichsfbqgw" path="res://scenes/enemy.tscn" id="2_pm3ni"]
@@ -26,8 +26,10 @@
 [ext_resource type="Script" uid="uid://dj5q2nn63qlke" path="res://scenes/trap.gd" id="24_og1vs"]
 [ext_resource type="PackedScene" uid="uid://dhpvlql0ni5en" path="res://scenes/Arrow.tscn" id="25_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://dcq0hxaelju2g" path="res://sprites/Button2.png" id="25_yq6so"]
-[ext_resource type="PackedScene" uid="uid://c3ah8diifl88t" path="res://scenes/enemy_spawner.tscn" id="27_2f3dj"]
-[ext_resource type="Script" uid="uid://cdfcumxoxw1jg" path="res://scripts/enemy_spawner.gd" id="28_yq6so"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_spawner.tscn" id="27_2f3dj"]
+[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="28_yq6so"]
+[ext_resource type="Script" uid="uid://borwlgc0duc4n" path="res://scenes/health_potion.gd" id="29_fv21b"]
+[ext_resource type="Texture2D" uid="uid://0ugbulf5y1qn" path="res://sprites/healing_potion.png" id="30_tel4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(117.5926, 128)
@@ -43,6 +45,9 @@ size = Vector2(62, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxglm"]
 size = Vector2(69, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkpxi"]
+radius = 30.066593
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -255,5 +260,17 @@ position = Vector2(1095, 433)
 script = ExtResource("28_yq6so")
 enemy_scene = ExtResource("2_pm3ni")
 player = NodePath("../Personatge")
+
+[node name="HealthPotion" type="Area2D" parent="."]
+script = ExtResource("29_fv21b")
+
+[node name="Sprite2D" type="Sprite2D" parent="HealthPotion"]
+position = Vector2(1285, 480)
+scale = Vector2(0.33333334, 0.37760416)
+texture = ExtResource("30_tel4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthPotion"]
+position = Vector2(1285, 481)
+shape = SubResource("CircleShape2D_qkpxi")
 
 [connection signal="take_damage" from="Personatge" to="Camera2D" method="_on_personatge_take_damage"]
