@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bhpy8oc0hxtd1" path="res://sprites/wasd.png" id="2_5qlyv"]
 [ext_resource type="Texture2D" uid="uid://c7frq6s4sh5f3" path="res://sprites/flechas.png" id="3_jfu8g"]
 [ext_resource type="Texture2D" uid="uid://c6hgypo0tlsve" path="res://sprites/shift.png" id="4_8jatx"]
+[ext_resource type="Texture2D" uid="uid://dm33elbs4clcw" path="res://sprites/TeclaM.png" id="4_62f8b"]
 [ext_resource type="Texture2D" uid="uid://4nnj74n7vngk" path="res://sprites/ctrl.png" id="5_62f8b"]
 [ext_resource type="Texture2D" uid="uid://itv2j2xacjla" path="res://sprites/e.png" id="6_jfu8g"]
 [ext_resource type="Texture2D" uid="uid://bl5xnb8xnyfkm" path="res://sprites/space.png" id="7_8jatx"]
@@ -111,6 +112,34 @@ texture = ExtResource("2_5qlyv")
 position = Vector2(23.420422, 17.338715)
 scale = Vector2(0.08871371, 0.40322605)
 texture = ExtResource("3_jfu8g")
+
+[node name="rule5container" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 405.00003
+offset_top = 486.0
+offset_right = 445.00003
+offset_bottom = 526.0
+scale = Vector2(11.272215, 2.4799986)
+
+[node name="rule1" type="Label" parent="rule5container"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.28
+anchor_top = 1.8610001
+anchor_right = -0.28
+anchor_bottom = 1.8610001
+offset_left = 11.90971
+offset_top = -60.730324
+offset_right = 428.90973
+offset_bottom = -37.730324
+scale = Vector2(0.088022925, 0.48387027)
+text = "Presiona                     para defenderte"
+
+[node name="flecha" type="Sprite2D" parent="rule5container"]
+position = Vector2(11.0005, 20.564537)
+scale = Vector2(0.006324316, 0.028745601)
+texture = ExtResource("4_62f8b")
 
 [node name="rule2container" type="Control" parent="."]
 anchors_preset = 0

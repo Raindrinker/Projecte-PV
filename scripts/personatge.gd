@@ -36,6 +36,11 @@ var can_slash: bool = true
 
 @onready var sword = $Body/Body/Sword
 
+@export var shield_stamina_cost := 0.5
+var is_defending := false
+
+@onready var shield = $Body/Body/Shield
+
 
 func _ready():
 	currentHealth = maxHealth
@@ -47,6 +52,8 @@ func heal(amount: int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	handle_shield(delta)
+	
 	if Input.is_action_just_pressed("interact"):
 		if select_interactable:
 			select_interactable.interact(self)
@@ -116,6 +123,10 @@ func _process(delta: float) -> void:
 		sword.slash()
 	
 func hit(body: Node) -> void:
+	if is_defending:
+		$Body.squash()
+		return
+		
 	thit = 0.25
 	var dir = (global_position - body.global_position).normalized()
 	
@@ -154,3 +165,14 @@ func add_key(id):
 func coger_moneda():
 	$Body.stretch()
 	coin_counter.sum_points(1)
+	
+func handle_shield(delta: float) -> void:
+	if Input.is_action_pressed("defend") and stamina.stamina > 0:
+		is_defending = true
+		shield.visible = true
+		
+		stamina.stamina -= shield_stamina_cost * delta
+		stamina.time = stamina.timeOriginal
+	else:
+		is_defending = false
+		shield.visible = false
