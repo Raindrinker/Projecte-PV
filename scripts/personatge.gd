@@ -171,7 +171,6 @@ func handle_shield(delta: float) -> void:
 		is_defending = true
 		shield.visible = true
 		
-		# Consumir stamina continuamente
 		stamina.stamina -= shield_stamina_cost * delta
 		stamina.time = stamina.timeOriginal
 	else:
