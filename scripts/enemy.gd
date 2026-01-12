@@ -7,6 +7,8 @@ var health = totalHealth
 
 var external_force : Vector2
 
+@onready var health_bar = $HealthBar
+
 func _process(delta: float) -> void:
 	
 	var dir = chasee.global_position - global_position
@@ -25,8 +27,15 @@ func _process(delta: float) -> void:
 	
 func take_damage(weapon_damage: float):
 	$AnimationPlayer.play("take_damage")
+	health_bar.visible = true
 	health -= weapon_damage
+	health_bar.value = health
 	print("damage")
 	
 	if health <= 0.0:
 		queue_free()
+
+func _ready():
+	health_bar.visible = false
+	health_bar.max_value = totalHealth
+	health_bar.value = health
